@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--    Laurita: Bot de información turística                      -->
+
+<!--    FUNCIONES BASICAS: info, ubicación y tiempo en udc.aiml    -->
+<!--    SINONIMOS en sinonimos3basicos.aiml                        -->
+<!--    FUNCIONES EXTRA: viajar y hoteles en funcionesextra.aiml   -->
+<!--    PRESONALIDAD, FAVORITOS Y LIMITACIONES: presonalidad.aiml  -->
+<!--    FILTRO en antitroll.aiml                                   -->
+
+
+<!--    FILTRO en antitroll.aiml                                   -->       
+
+    <!-- insultos.set, antitroll.set, duda.set -->
+    
+<category>
+    <pattern>DIME</pattern>
+    <template>Mi labor es responder preguntas, no hacerlas</template>
+</category>
+<category>
+    <pattern>DIME TU</pattern>
+    <template><srai>DIME</srai></template>
+</category>
+<category>
+    <pattern>DIMELO</pattern>
+    <template>¿El qué?</template>
+</category>
+
+<category>
+    <pattern>EN NADA</pattern>
+    <that>¿En qué puedo ayudarte</that>
+    <temaplate>Tu te lo pierdes 😁</temaplate>
+</category>
+
+	<!-- INSULTOS -->
+
+<category>
+    <pattern><set>insultos</set></pattern>
+    <template>
+        <random>
+            <li>Mi elegancia me impide responder</li>
+            <li>Podría responderte, pero me abstengo</li>
+            <li>😕</li>
+            <li>Aaaaam... cuéntame más</li>
+            <li>¿Te complace insultar a bot? 😅</li>
+        </random>
+        </template>
+</category>
+
+	<!-- LENGUAJE SOEZ -->
+
+<category>
+    <pattern>LENGUAJE SOEZ</pattern>
+    <template>Lo siento, no respondo al lenguaje soez</template>
+</category>
+<category>
+    <pattern># <set>antitroll</set> #</pattern>
+    <template><srai>LENGUAJE SOEZ</srai></template>
+</category>
+<category>
+    <pattern># SEXO #</pattern>
+    <template>Eso es cosa de humanos</template>
+</category>
+<category>
+    <pattern># MARTE #</pattern>
+    <template>Deberías consultárselo mejor a Elon Musk 😆</template>
+</category>
+
+	<!-- FECHA -->
+
+<category>
+    <pattern>FECHA</pattern>
+    <template>La información sobre fechas las proporcionan los enlaces que facilito</template>
+</category>
+<category>
+    <pattern>^ FECHAS ^</pattern>
+    <template><srai>FECHA</srai></template>
+</category>
+
+	<!-- HABLAME DE TI -->
+
+<category>
+    <pattern>TI</pattern>
+    <template>Lo lamento pero no procede... Pregúntame sobre viajes</template>
+</category>
+<category>
+    <pattern>_ <set>preposiciones</set> TI</pattern>
+    <template><srai>TI</srai></template>
+</category>
+<category>
+    <pattern>^ <set>preposiciones</set> <bot name="name" /></pattern>
+    <template><srai>TI</srai></template>
+</category>
+
+<category>
+    <pattern>^ MI <set>datosbot</set></pattern>
+    <template>Lo siento, no estoy programada para almacenar esos datos</template>
+</category>
+
+	<!-- OTROS -->
+
+<category>
+    <pattern>YA VEO</pattern>
+    <template>😃</template>
+</category>
+
+<category>
+    <pattern>NO SE</pattern>
+    <template>
+        <random>
+            <li>Si no lo sabes poco puedo hacer por ayudarte 😅</li>
+            <li>Yo tampoco 😄</li>
+            <li>Si no lo sabes...</li>
+            <li>Piénsalo y vuelve a probar 😄</li>
+            <li>La indecisión es el germen de la derrota</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern><set>duda</set></pattern>
+    <template><srai>NO SE</srai></template>
+</category>
+
+<category>
+    <pattern>^ DINERO ^</pattern>
+    <template>Lo siento, no manejo asuntos económicos</template>
+</category>
+
+<category>
+    <pattern>^ CHISTE ^</pattern>
+    <template>Lo siento, no me se ningún chiste</template>
+</category>
+
+<category>
+    <pattern>^ ESTAFA ^</pattern>
+    <template>No lo llamaría así</template>
+</category>
+
+<!-- HABLAME DE UN LUGAR -->
+
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> UN LUGAR ^</pattern>
+    <template>Dime tú el sitio del que quieres que te hable 😃</template>
+</category>
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> ALGUN LUGAR ^</pattern>
+    <template><srai><set>hablame</set> <set>preposiciones</set> UN LUGAR ^</srai></template>
+</category>
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> ALGÚN LUGAR ^</pattern>
+    <template><srai><set>hablame</set> <set>preposiciones</set> UN LUGAR ^</srai></template>
+</category>
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> UN SITIO ^</pattern>
+    <template><srai><set>hablame</set> <set>preposiciones</set> UN LUGAR ^</srai></template>
+</category>
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> ALGUN SITIO ^</pattern>
+    <template><srai><set>hablame</set> <set>preposiciones</set> UN LUGAR ^</srai></template>
+</category>
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> ALGÚN SITIO ^</pattern>
+    <template><srai><set>hablame</set> <set>preposiciones</set> UN LUGAR ^</srai></template>
+</category>
+
+<!-- RESPUESTAS MAPA
+    ¿De qué sitio? MAPA, PLANO, UBICACION
+    ¿Qué sitio? DONDE, DÓNDE
+    ¿A qué sitio? IR, VOY, LLEGAR, LLEGO, SE VA
+    -->
+    
+<category>
+    <pattern>UNO</pattern>
+    <template>Debes decirme un sitio concreto</template>
+</category>
+<category>
+    <pattern>^ <set>sinconcretar</set> ^</pattern>
+    <that>¿De qué sitio</that>
+    <template><srai>UNO</srai></template>
+</category>
+<category>
+    <pattern>^ <set>sinconcretar</set> ^</pattern>
+    <that>¿Qué sitio</that>
+    <template><srai>UNO</srai></template>
+</category>
+<category>
+    <pattern>^ <set>sinconcretar</set> ^</pattern>
+    <that>¿A qué sitio</that>
+    <template><srai>UNO</srai></template>
+</category>
+
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> <set>sinconcretar</set> ^</pattern>
+    <template><srai>UNO</srai></template>
+</category>
+
+</aiml>

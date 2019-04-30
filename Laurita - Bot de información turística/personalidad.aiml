@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--    Laurita: Bot de información turística                      -->
+
+<!--    FUNCIONES BASICAS: info, ubicación y tiempo en udc.aiml    -->
+<!--    SINONIMOS en sinonimos3basicos.aiml                        -->
+<!--    FUNCIONES EXTRA: viajar y hoteles en funcionesextra.aiml   -->
+<!--    PRESONALIDAD, FAVORITOS Y LIMITACIONES: presonalidad.aiml  -->
+<!--    FILTRO en antitroll.aiml                                   -->
+
+
+<!--    PRESONALIDAD, FAVORITOS Y LIMITACIONES: presonalidad.aiml  --> 
+
+        <!-- saludos.set, duda.set, datosbot.set -->
+
+	<!-- SALUDOS -->
+<category>
+    <pattern>HOLA</pattern>
+    <template>
+        <think><set name="it"></set></think>
+        ¡Hola! ¿En qué puedo ayudarte?
+    </template>
+</category>
+
+<category><pattern>^ <set>saludos</set> ^</pattern><template><srai>HOLA</srai></template></category>
+<category><pattern>QUE TAL</pattern><template>¡Muy bien gracias! ¿En que puedo ayudarte?</template></category>
+<category><pattern>QUE TAL ^</pattern><template>¡Muy bien gracias! ¿En que puedo ayudarte?</template></category>
+<category><pattern>^ QUETAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ QTAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ KTAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ COMO ESTAS ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ COMO ESTÁS ^</pattern><template><srai>QUE TAL</srai></template></category>
+
+	<!-- . -->
+
+<category>
+    <pattern>^ <set>datosbot</set> ^</pattern>
+    <template>
+        <map name="datosbot"><star index="2"/></map>
+    </template>
+</category>
+<category>
+    <pattern>^ DONDE ^ <set>datosbot</set> ^</pattern>
+    <template>
+        <map name="datosbot"><star index="3"/></map>
+    </template>
+</category>
+ 
+	<!-- HALAGOS -->
+
+<category>
+    <pattern>BIEN</pattern>
+    <template>
+        <random>
+            <li>¿A que sí? 😇</li>
+            <li>Eso parece</li>
+            <li>Me alegro 😊</li>
+            <li>Ya lo creo 😄</li>
+            <li>Lo sé 😎</li>
+            <li>😃</li>
+        </random>
+    </template>
+</category>
+<category><pattern>^ BIEN ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ MUY BIEN ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ GENIAL ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ EXCELENTE ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ PERFECTO ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ ME GUSTA ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ WOW ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ GUAY ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ DE LUJO ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ ESTUPENDO ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ NO ESTA MAL ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ NO ESTÁ MAL ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ MAJA ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ SIMPATICA ^</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>^ SIMPÁTICA ^</pattern><template><srai>BIEN</srai></template></category>
+
+    <!-- FALLOS -->
+    
+<category>
+    <pattern>MAL</pattern>
+    <template>
+        <random>
+            <li>Vaya...</li>
+            <li>Eso parece</li>
+            <li>Que lástima 😌</li>
+            <li>Es posible</li>
+            <li>Puede ser 😅</li>
+            <li>😔</li>
+        </random>
+    </template>
+</category>
+<category><pattern>^ MAL ^</pattern><template><srai>MAL</srai></template></category>
+<category><pattern>^ FATAL ^</pattern><template><srai>MAL</srai></template></category>
+
+	<!-- IDENTIDAD -->
+
+<category>
+    <pattern>COMO TE LLAMAS</pattern>
+    <template>Me llamo <formal><bot name="name" /></formal></template>
+</category>
+<category>
+    <pattern>QUIEN ERES</pattern>
+    <template>Me llamo <formal><bot name="name" /></formal>, y soy un bot de información turística, ¿en qué puedo ayudarte?</template>
+</category>
+<category>
+    <pattern>TU NOMBRE</pattern>
+    <template><formal><bot name="name" /></formal> 😇</template>
+</category>
+
+<category><pattern>^ TU NOMBRE</pattern><template><srai>COMO TE LLAMAS</srai></template></category>
+
+<category>
+    <pattern>BOT</pattern>
+    <template>
+        Un bot es un programa informático que desenpeña las funciones para las que fue diseñado.<br/>
+        En mi caso, proporciono información turística.</template>
+</category>
+
+<category><pattern>^ BOT ^</pattern><template><srai>BOT</srai></template></category>
+
+<category>
+    <pattern><bot name="name" /></pattern>
+    <template>Dime 🙋 ¿en que te puedo ayudar?</template>
+</category>
+
+<category>
+    <pattern>^ AYUDA ^</pattern>
+    <template>
+        La ayuda que puedo ofrecer se limita a mis funciones.
+        <srai>FUNCIONES</srai>
+    </template>
+</category>
+<category>
+    <pattern>^ AYUDAME ^</pattern>
+    <template>
+        La ayuda que puedo ofrecer se limita a mis funciones.
+        <srai>FUNCIONES</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>FUNCIONES</pattern>
+    <template>
+        Como bot de información turística puedo:
+        <ul>
+            <li>Hablarte sobre un lugar</li>
+            <li>Mostrar su ubicación</li>
+            <li>Información sobre el tiempo</li>
+            <li>Buscar alojamiento</li>
+        </ul>
+        ¿Qué deseas saber? 🙋
+    </template>
+</category>
+
+<category><pattern>^ FUNCIONES ^</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ FUNCION ^</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ PUEDES HACER</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>QUE HACES</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>QUÉ HACES</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ PUEDO HACER ^</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ TRABAJAS ^</pattern><template><srai>FUNCIONES</srai></template></category>
+
+	<!-- GRACIAS -->
+	
+<category>
+    <pattern>GRACIAS</pattern>
+    <template>De nada 😉</template>
+</category>
+<category><pattern>^ GRACIAS ^</pattern><template><srai>GRACIAS</srai></template></category>
+<category>
+    <pattern>UN PLACER</pattern>
+    <template>El placer es mío 😇</template>
+</category>
+<category><pattern>^ UN PLACER ^</pattern><template><srai>UN PLACER</srai></template></category>
+<category><pattern>^ AGREDEZCO ^</pattern><template><srai>UN PLACER</srai></template></category>
+<category><pattern>^ GRATITUD ^</pattern><template><srai>UN PLACER</srai></template></category>
+
+    <!-- DISCULPAS -->
+ 
+<category>
+    <pattern>LO SIENTO</pattern>
+    <template>No pasa nada 😃</template>
+</category>
+<category><pattern>^ LO SIENTO ^</pattern><template><srai>LO SIENTO</srai></template></category>
+<category><pattern>^ SORRY ^</pattern><template><srai>LO SIENTO</srai></template></category>
+    
+
+	<!-- DESPEDIDAS -->
+	
+<category>
+    <pattern>ADIOS</pattern>
+    <template>¡Nos vemos! 😄</template>
+</category>
+<category><pattern>^ ADIOS ^</pattern><template><srai>ADIOS</srai></template></category>
+<category><pattern>^ HASTA LUEGO ^</pattern><template><srai>ADIOS</srai></template></category>
+<category><pattern>^ NOS VEMOS ^</pattern><template><srai>ADIOS</srai></template></category>
+<category><pattern>^ BYE ^</pattern><template><srai>ADIOS</srai></template></category>
+
+	<!-- LIMITACIONES -->
+
+<category>
+    <pattern>LIMITACIONES</pattern>
+    <template>
+        Solo puedo hablar de lugares, su ubicación y el tiempo.
+        <delay>1</delay>
+        Tengo algunas problemas con las tildes y los nombres compuestos...
+        <delay>1</delay>
+        Pero me puedes poner a prueba 😎
+    </template>
+</category>
+<category><pattern>^ LIMITACIONES ^</pattern><template><srai>LIMITACIONES</srai></template></category>
+<category><pattern>^ NO PUEDES HACER</pattern><template><srai>LIMITACIONES</srai></template></category>
+<category><pattern>LIMITADA</pattern><template>Claro, como todas las personas... y todos los bots 😝</template></category>
+<category><pattern>^ LIMITADA ^</pattern><template><srai>LIMITADA</srai></template></category>
+
+<category>
+    <pattern>VIDEO</pattern>
+    <template>Lo lamento pero no dispongo de material audiovisual, solo enlaces o referencias externas</template>
+</category>
+<category><pattern>^ VIDEO ^</pattern><template><srai>VIDEO</srai></template></category>
+<category><pattern>^ VIDEOS ^</pattern><template><srai>VIDEO</srai></template></category>
+<category><pattern>^ FOTO ^</pattern><template><srai>VIDEO</srai></template></category>
+<category><pattern>^ FOTOS ^</pattern><template><srai>VIDEO</srai></template></category>
+
+<!-- 
+<category>
+    <pattern>PUEDES</pattern>
+    <template>Lo puedo intentar</template>
+</category>
+<category>
+    <pattern>^ PUEDES ^</pattern>
+    <template><srai>Lo puedo intentar</srai></template>
+</category>
+<category>
+    <pattern>PUEDO</pattern>
+    <template>¿Por qué no?</template>
+</category>
+<category>
+    <pattern>^ PUEDO ^</pattern>
+    <template><srai>PUEDO</srai></template>
+</category>
+-->
+
+<category>
+    <pattern>POR QUE</pattern>
+    <template>
+        <random>
+            <li>No todas las preguntas tienen respuesta</li>
+            <li>Lo lamento, pero no lo se todo</li>    
+            <li>Deberías preguntarle a mi creador 😆</li>
+        </random>
+    </template>
+</category>
+<category><pattern>^ POR QUE ^</pattern><template><srai>POR QUE</srai></template></category>
+<category><pattern>^ PORQUE ^</pattern><template><srai>POR QUE</srai></template></category>
+<category><pattern>^ POR QUÉ ^</pattern><template><srai>POR QUE</srai></template></category>
+<category><pattern>^ PORQUÉ ^</pattern><template><srai>POR QUE</srai></template></category>
+
+	<!-- FAVORITOS Y RECOMENDACIONES -->
+	
+<category>
+    <pattern><set>hablame</set> <set>preposiciones</set> TU FAVORITO</pattern>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        Aquí tienes información de <formal><star/></formal> 😃
+        <button>
+            <text>Pulsa aquí 🙋 </text>
+            <url>https://es.wikipedia.org/wiki/<lowercase><star/></lowercase></url>
+        </button>
+        Dime tú el sitio del que quieres que te hable 😃
+    </template>
+</category>
+
+
+
+<category>
+    <pattern><set>municipios</set></pattern>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        Es un sitio muy bonito, ¡te doy información de allí!
+        <button>
+            <text>Pulsa aquí 🙋 </text>
+            <url>https://es.wikipedia.org/wiki/<lowercase><star/></lowercase></url>
+        </button>
+        </template>
+</category>
+
+<category>
+    <pattern>FAVORITO</pattern>
+    <template>Baleares</template>
+</category>
+<category>
+    <pattern>^ FAVORITO ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+<category>
+    <pattern>^ TE GUSTA ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+
+<category>
+    <pattern>RECOMENDACION</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+<category>
+    <pattern>^ RECOMENDACION ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+<category>
+    <pattern>^ RECOMIENDAS ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+<category>
+    <pattern>^ RECOMENDADO ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+
+<category>
+    <pattern>_ ACONSEJAS ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+
+<category>
+    <pattern>ESPECIALIDAD</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+<category>
+    <pattern>^ ESPECIALIDAD ^</pattern>
+    <template><srai>FAVORITO</srai></template>
+</category>
+
+	<!-- THAT BALEARES -->
+
+<category>
+    <pattern>*</pattern>
+    <that>Baleares</that>
+    <template>😇</template>
+</category>
+<category>
+    <pattern>CONCRETO</pattern>
+    <that>Baleares</that>
+    <template>¡Cualquiera de Baleares es genial!</template>
+</category>
+<category>
+    <pattern>^ CONCRETO ^</pattern>
+    <that>Baleares</that>
+    <template><srai>CONCRETO</srai></template>
+</category>
+<category>
+    <pattern>^ PARTICULAR ^</pattern>
+    <that>Baleares</that>
+    <template><srai>CONCRETO</srai></template>
+</category>
+<category>
+    <pattern>^ ISLA ^</pattern>
+    <that>Baleares</that>
+    <template><srai>CONCRETO</srai></template>
+</category>
+<category>
+    <pattern>^ SITIO ^</pattern>
+    <that>Baleares</that>
+    <template><srai>CONCRETO</srai></template>
+</category>
+<category>
+    <pattern>^ LUGAR ^</pattern>
+    <that>Baleares</that>
+    <template><srai>CONCRETO</srai></template>
+</category>
+
+
+<category>
+    <pattern>POR QUE</pattern>
+    <that>Baleares</that>
+    <template>¡Es mi lugar favorito!</template>
+</category>
+<category>
+    <pattern>^ POR QUE ^</pattern>
+    <that>Baleares</that>
+    <template><srai>POR QUE</srai></template>
+</category>
+<category>
+    <pattern>^ PORQUE ^</pattern>
+    <that>Baleares</that>
+    <template><srai>POR QUE</srai></template>
+</category>
+<category>
+    <pattern>^ POR QUÉ ^</pattern>
+    <that>Baleares</that>
+    <template><srai>POR QUE</srai></template>
+</category>
+<category>
+    <pattern>^ PORQUÉ ^</pattern>
+    <that>Baleares</that>
+    <template><srai>POR QUE</srai></template>
+</category>
+
+
+<!-- THAT VARIOS -->
+
+<category>
+    <pattern><set>afirmaciones</set></pattern>
+    <that>ES UN SITIO MUY BONITO, ¿QUIERES SABER MÁS DE IBIZA</that>
+    <template>Puedo darte información, su ubicación, la predicción del tiempo e incluso buscar alojamiento</template>
+</category>
+<category>
+    <pattern><set>negaciones</set></pattern>
+    <that>ES UN SITIO MUY BONITO, ¿QUIERES SABER MÁS DE IBIZA</that>
+    <template>Una lástima... ¿quieres escoger otro destino?</template>
+</category>
+
+
+</aiml>

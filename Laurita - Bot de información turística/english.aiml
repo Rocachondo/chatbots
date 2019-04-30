@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<category>
+    <pattern><set>english</set></pattern>
+    <template>Sorry, but this bot it's only available in spanish</template>
+</category>
+</aiml>
