@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--    Laurita: Bot de información turística                      -->
+
+<!--    FUNCIONES BASICAS: info, ubicación y tiempo en udc.aiml    -->
+<!--    SINONIMOS en sinonimos3basicos.aiml                        -->
+<!--    FUNCIONES EXTRA: viajar y hoteles en funcionesextra.aiml   -->
+<!--    PRESONALIDAD, FAVORITOS Y LIMITACIONES: presonalidad.aiml  -->
+<!--    FILTRO en antitroll.aiml                                   -->
+
+
+<!--    SINONIMOS en sinonimos3basicos.aiml                        -->
+
+    <!-- hablame.set, preposiciones.set, adverbioslugar.set -->
+
+	<!-- INFORMACION -->
+
+<category>
+    <pattern>^ HABLAME ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ HÁBLAME ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ HABLA ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+
+<category>
+    <pattern>^ INFORMACION ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ INFORMACIÓN ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ DOCUMENTACION ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ DOCUMENTACIÓN ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ SABER ^ <set>preposiciones</set> *</pattern>
+    <template><srai>HABLAME DE <star index="4"/></srai></template>
+</category>
+
+	<!-- INFORMACION CON IT (con adverbios) -->
+	
+<category>
+    <pattern>^ HABLAME ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ HÁBLAME ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ HABLA ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ INFORMACION ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ INFORMACIÓN ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ DOCUMENTACION ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ DOCUMENTACIÓN ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern># SABER ^ <set>preposiciones</set> <set>advervioslugar</set></pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+
+    <!-- ojo con esta  HAY QUE DELIMITARLA CON THAT UNICOS -->
+    <!-- 
+        <category>
+            <pattern>^ <set>preposiciones</set> *</pattern>
+            <template><srai>HABLAME DE <star index="3"/></srai></template>
+        </category>
+    -->
+
+	<!-- INFORMACION CON IT (sin adverbios) -->
+
+<category>
+    <pattern>^ INFORMACION ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ INFORMACIÓN ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ DOCUMENTACION ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ DOCUMENTACIÓN ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ DECIR ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ SABER ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HABLAME DE <get name="it"/></srai>
+            </li>
+            <li>¿De dónde?</li>
+        </condition>
+    </template>
+</category>
+
+    <!-- MAPAS -->
+
+<category><pattern>^ MAPA DE *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="2"/></srai></template></category>
+<category><pattern>^ PLANO DE *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="2"/></srai></template></category>
+<category><pattern>^ UBICACION DE *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="2"/></srai></template></category>
+<category><pattern>^ UBICACIÓN DE *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="2"/></srai></template></category>
+<category><pattern>^ ESTA *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="2"/></srai></template></category>
+<category><pattern>^ ESTÁ *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="2"/></srai></template></category>
+<category><pattern>^ IR <set>preposiciones</set> *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="3"/></srai></template></category>
+<category><pattern>^ VOY <set>preposiciones</set> *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="3"/></srai></template></category>
+<category><pattern>^ LLEGAR <set>preposiciones</set> *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="3"/></srai></template></category>
+<category><pattern>^ LLEGO <set>preposiciones</set> *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="3"/></srai></template></category>
+<category><pattern>^ LLEGA <set>preposiciones</set> *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="3"/></srai></template></category>
+<category><pattern>^ SE VA <set>preposiciones</set> *</pattern><template><srai>ENSEÑAME EL MAPA DE <star index="3"/></srai></template></category>
+
+	<!-- MAPA CON IT-->
+
+<category>
+    <pattern>^ MAPA ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>ENSEÑAME EL MAPA DE <get name="it"/></srai>
+            </li>
+            <li>¿De qué sitio?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ MAPAS ^</pattern>
+    <template><srai>^ MAPA ^</srai></template>
+</category>
+<category>
+    <pattern>^ PLANO ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>ENSEÑAME EL MAPA DE <get name="it"/></srai>
+            </li>
+            <li>¿De qué sitio?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ PLANOS ^</pattern>
+    <template><srai>^ PLANO ^</srai></template>
+</category>
+<category>
+    <pattern>^ UBICACION ^</pattern>
+    <template><srai>^ PLANO ^</srai></template>
+</category>
+<category>
+    <pattern>^ UBICACIÓN ^</pattern>
+    <template><srai>^ PLANO ^</srai></template>
+</category>
+<category>
+    <pattern>^ UBICACIONES ^</pattern>
+    <template><srai>^ PLANO ^</srai></template>
+</category>
+<category>
+    <pattern>^ DONDE ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>ENSEÑAME EL MAPA DE <get name="it"/></srai>
+            </li>
+            <li>¿Qué sitio?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ DÓNDE ^</pattern>
+    <template><srai>^ DONDE ^</srai></template>
+</category>
+<category>
+    <pattern>^ IR ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>ENSEÑAME EL MAPA DE <get name="it"/></srai>
+            </li>
+            <li>¿A qué sitio?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ VOY ^</pattern>
+    <template><srai>^ IR ^</srai></template>
+</category>
+<category>
+    <pattern>^ LLEGAR ^</pattern>
+    <template><srai>^ IR ^</srai></template>
+</category>
+<category>
+    <pattern>^ LLEGO ^</pattern>
+    <template><srai>^ IR ^</srai></template>
+</category>
+<category>
+    <template><srai>^ IR ^</srai></template>
+</category>
+<category>
+    <pattern>^ SE VA ^</pattern>
+    <template><srai>^ IR ^</srai></template>
+</category>
+<category>
+    <pattern>^ SE LLEGA ^</pattern>
+    <template><srai>^ IR ^</srai></template>
+</category>
+
+    <!-- RESPUESTAS MAPA
+    ¿De qué sitio? MAPA, PLANO, UBICACION
+    ¿Qué sitio? DONDE, DÓNDE
+    ¿A qué sitio? IR, VOY, LLEGAR, LLEGO, SE VA
+    -->
+
+    <!-- TIEMPO, REVISAR LOS _ -->
+
+<category>
+    <pattern>^ TIEMPO ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+
+<category>
+    <pattern>^ TEMPERATURA ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+
+<category>
+    <pattern>^ CLIMA ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+
+<category>
+    <pattern>^ SOL ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+
+<category>
+    <pattern>^ LLUVIA ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ LLOVER ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern>^ LLUEVE ^ <set>preposiciones</set> *</pattern>
+    <template><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+<category>
+    <pattern># LLOVIENDO ^ <set>preposiciones</set> *</pattern>
+    <template>Espera que me asomo...<delay>3</delay><srai>QUE TIEMPO HACE EN <star index="4"/></srai></template>
+</category>
+
+	<!-- TIEMPO CON IT-->
+	
+<category>
+    <pattern>^ TIEMPO ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>QUE TIEMPO HACE EN <get name="it"/></srai>
+            </li>
+            <li>¿En qué lugar?</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ TEMPERATURA ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+<category>
+    <pattern>^ CLIMA ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+<category>
+    <pattern>^ SOL ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+<category>
+    <pattern>^ LLUVIA ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+<category>
+    <pattern>^ LLOVER ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+<category>
+    <pattern>^ LLUEVE ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+<category>
+    <pattern># LLOVIENDO ^</pattern>
+    <template><srai>QUE TIEMPO HACE EN <get name="it"/></srai></template>
+</category>
+
+</aiml>

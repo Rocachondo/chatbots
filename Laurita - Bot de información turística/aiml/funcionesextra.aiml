@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--    Laurita: Bot de información turística                      -->
+
+<!--    FUNCIONES BASICAS: info, ubicación y tiempo en udc.aiml    -->
+<!--    SINONIMOS en sinonimos3basicos.aiml                        -->
+<!--    FUNCIONES EXTRA: viajar y hoteles en funcionesextra.aiml   -->
+<!--    PRESONALIDAD, FAVORITOS Y LIMITACIONES: presonalidad.aiml  -->
+<!--    FILTRO en antitroll.aiml                                   -->
+
+
+<!--    FUNCIONES EXTRA: viajar y hoteles en funcionesextra.aiml   -->
+
+    <!-- actividades.set -->	
+	
+	<!-- VIAJAR -->
+
+<category>
+    <pattern>VIAJAR</pattern>
+    <template>¿A dónde quieres ir?</template>
+</category>
+<category>
+    <pattern>^ VIAJAR</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+<category>
+    <pattern>^ VIAJE</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+<category>
+    <pattern>^ VIAJECITO</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+<category>
+    <pattern>^ ESCAPADA</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+<category>
+    <pattern>^ ESCAPADITA</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+<category>
+    <pattern>^ VISITA ^</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+<category>
+    <pattern>^ VISITAR ^</pattern>
+    <template><srai>VIAJAR</srai></template>
+</category>
+
+<category>
+    <pattern>*</pattern>
+    <that>¿A dónde quieres ir</that>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        Perfecto, ¿qué quieres saber de <formal><star/></formal>?
+    </template>
+</category>
+<category>
+    <pattern><set>preposiciones</set> *</pattern>
+    <that>¿A dónde quieres ir</that>
+    <template><srai><star index="2"/></srai></template>
+</category>
+
+	<!-- A DESTINO -->
+
+<category>
+    <pattern>VIAJAR A *</pattern>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        Buena elección, ¿qué quieres saber de <formal><star/></formal>?
+    </template>
+</category>
+<category>
+    <pattern>^ VIAJAR A *</pattern>
+    <template><srai>VIAJAR A <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ VIAJE A *</pattern>
+    <template><srai>VIAJAR A <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ VIAJECITO A *</pattern>
+    <template><srai>VIAJAR A <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ ESCAPADA A *</pattern>
+    <template><srai>VIAJAR A <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ ESCAPADITA A *</pattern>
+    <template><srai>VIAJAR A <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ VISITA A *</pattern>
+    <template><srai>VIAJAR A <star index="2"/></srai></template>
+</category>
+
+	<!-- HOTEL -->
+	
+<category>
+    <pattern>HOTEL EN *</pattern>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        Aquí puedes consultar diferentes opciones 😃
+        <button>
+            <text>Pulsa aquí 🙋</text>
+            <url>https://www.booking.com/<star/></url>
+        </button>
+    </template>
+</category>
+
+	<!-- HOTEL: sinónimos -->
+
+<category>
+    <pattern>^ HOTEL <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+<category>
+    <pattern>^ HOSTAL <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+<category>
+    <pattern>^ ALBERGUE <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+<category>
+    <pattern>^ ALOJAMIENTO <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+<category>
+    <pattern>^ ALOJARME <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+<category>
+    <pattern>^ DORMIR <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+<category>
+    <pattern>^ HACER NOCHE <set>preposiciones</set> *</pattern>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+
+<category>
+    <pattern>HOTEL</pattern>
+    <template>¿En qué ciudad?</template>
+</category>
+
+	<!-- IT HOTEL -->
+
+<category>
+    <pattern>^ HOTEL ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ HOSTAL ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ ALBERGUE ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ ALOJAMIENTO ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ ALOJARME ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>_ DORMIR ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>^ HACER NOCHE ^</pattern>
+    <template>
+        <condition name="it">
+            <li value="*">
+                <srai>HOTEL EN <get name="it"/></srai>
+            </li>
+            <li><srai>HOTEL</srai></li>
+        </condition>
+    </template>
+</category>
+
+	<!-- THAT HOTEL: ¿En qué ciudad? -->
+
+<category>
+    <pattern>*</pattern>
+    <that>¿En qué ciudad</that>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        De acuerdo, te muestro un par de alternativas de alojamiento en <formal><star/></formal>.
+        <button>
+            <text></text>
+            <url>https://www.booking.com/<star/></url>
+        </button>
+    </template>
+</category>
+
+<category>
+    <pattern>^ <set>preposiciones</set> *</pattern>
+    <that>¿En qué ciudad</that>
+    <template><srai>HOTEL EN <star index="3"/></srai></template>
+</category>
+
+	<!-- ACTIVIDADES -->
+	
+<category>
+    <pattern># <set>actividades</set></pattern>
+    <template>Perfecto, ¿dónde te gustaría ir?</template>
+</category>
+
+<category>
+    <pattern>*</pattern>
+    <that>Perfecto, ¿dónde te gustaría ir</that>
+    <template>
+        <think>
+            <set name="it"><star/></set>
+        </think>
+        <srai>HABLAME DE <star/></srai>
+    </template>
+</category>
+	<!-- . -->
+<category>
+    <pattern><set>preposiciones</set> *</pattern>
+    <that>Perfecto, ¿dónde te gustaría ir</that>
+        <think>
+            <set name="it"><star index="2"/></set>
+        </think>
+    <template><srai>HABLAME DE <star index="2"/></srai></template>
+</category>
+
+<category>
+    <pattern># <set>duda</set> ^</pattern>
+    <that>Perfecto, ¿dónde te gustaría ir</that>
+    <template>No puedo decidir por ti, pero te puedo aconsejar mi lugar favorito. ¡Yo iría a Baleares!</template>
+</category>
+    <!-- . -->
+<category>
+    <pattern># <set>afirmaciones</set> ^</pattern>
+    <that>¡Yo iría a Baleares</that>
+    <template>Excelente, ¿algún sitio en concreto?</template>
+</category>
+<category>
+    <pattern><set>negaciones</set> ^</pattern>
+    <that>¡Yo iría a Baleares</that>
+    <template>Dime entonces que tienes en mente</template>
+</category>
+    <!-- . -->
+<category>
+    <pattern><set>afirmaciones</set> ^</pattern>
+    <that>Excelente, ¿algún sitio en concreto</that>
+    <template>Dime</template>
+</category>
+<category>
+    <pattern># <set>negaciones</set> ^</pattern>
+    <that>Excelente, ¿algún sitio en concreto</that>
+    <template>
+        <think><set name="it">Ibiza</set></think>
+        Déjame que te recomienda Ibiza, es el lugar que mejor conozco.
+        <delay>1</delay>
+        <srai>HABLAME DE <get name="it"></get></srai>
+    </template>
+</category>
+    <!-- . -->
+<category>
+    <pattern># <set>afirmaciones</set> ^</pattern>
+    <that>Excelente, ¿algún sitio en concreto?</that>
+    <template>Dime entonces que tienes en mente</template>
+</category>
+
+</aiml>
