@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+
+    <!-- Define funciones básicas del bot -->
+
+<category>
+    <pattern>*</pattern>
+    <template>
+   <!--     <think><set name="topic"></set></think> -->
+        No tengo respuesta para eso
+    </template>
+</category>
+
+<category>
+    <pattern>HOLA</pattern>
+    <template>
+        <think><set name="topic"></set></think>
+        <delay>1</delay>
+        ¡Hola! Soy FitBot, asesor de nutrición y fitness cibernético. ¿En qué puedo ayudarte?
+        <reply>
+            <text>Funciones</text>
+            <postback>Funciones</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>FUNCIONES</pattern>
+    <template>
+        <think><set name="topic"></set></think>
+        <delay>1</delay>
+        Puedo ofrecerte los siguientes servicios:
+        <ul>
+            <li>Asesoramiento personalizado</li>
+            <li>Desmentir mitos de nutrición y fitness</li>
+            <li>Recomendarte profesionales no cibernéticos</li>
+            <li>Jugar al Quiz de nutrición y fitness</li>
+        </ul>
+        <reply>
+            <text>Asesoramiento</text>
+            <postback>Asesoramiento</postback>
+        </reply>
+        <reply>
+            <text>Mitos</text>
+            <postback>Mitos</postback>
+        </reply>
+        <reply>
+            <text>Profesionales</text>
+            <postback>Profesionales</postback>
+        </reply>
+        <reply>
+            <text>Jugar al Quiz</text>
+            <postback>Quiz</postback>
+        </reply>
+    </template>
+</category>
+
+<!-- 3 FUNCIONES BASICAS -->
+
+    <!-- ASESORAMIENTO -->
+
+<category>
+    <pattern>^ ASESORAMIENTO ^</pattern>
+    <template><srai>ASESORAMIENTO</srai></template>
+</category>
+
+    <!-- Continúa en asesoramiento.aiml -->
+
+    <!-- MITOS -->
+    
+<category>
+    <pattern>^ MITOS ^</pattern>
+    <template><srai>INFO MITOS</srai></template>
+</category>
+
+    <!-- Continúa en mitos.aiml -->
+
+    <!-- PROFESIONALES -->
+    
+<category>
+    <pattern>^ PROFESIONALES ^</pattern>
+    <template><srai>PROFESIONAL</srai></template>
+</category>
+
+    <!-- Continúa en profesionales.aiml -->
+    
+        <!-- QUIZ -->
+    
+<category>
+    <pattern>^ QUIZ ^</pattern>
+    <template><srai>QUIZ</srai></template>
+</category>
+
+    <!-- Continúa en quiz.aiml -->
+    
+<category>
+    <pattern><set>negaciones</set></pattern>
+    <think><set name="topic"></set></think>
+    <template>De acuerdo, ¿qué quieres ahora?</template>
+</category>
+
+</aiml>

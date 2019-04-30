@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+
+
+<!-- ¿ASESORAMIENTO? -->
+
+<category>
+    <pattern>ASESORAMIENTO</pattern>
+    <template>
+        <think><set name="topic">asesoramiento</set></think>
+        <delay>1</delay>¡Muy bien! Para un asesoramiento personalizado necesitaré algunos datos tuyos, ¿cómo te llamas?
+    </template>
+</category>
+
+<category>
+    <pattern>*</pattern>
+    <that>¿CÓMO TE LLAMAS</that>
+    <template>
+        <think>
+            <set name="nombre"><formal><star/></formal></set>
+        </think>
+        <delay>1</delay>
+        ¡Un placer <formal><star/></formal>!
+        <delay>1</delay>
+        Lo primero de todo es definir tu objetivo. Escoge:<br/>
+        <ul>
+            <li>Subir de peso</li>
+            <li>Bajar de peso</li>
+            <li>Mantener peso</li>
+        </ul>
+        ¡Adelante! Elige tu objetivo
+    </template>
+</category>
+
+<!-- NO, sale y lleva a otras categorías -->
+
+<category>
+    <pattern>NO ^</pattern>
+    <that>¿CÓMO TE LLAMAS</that>
+    <template>
+        <delay>1</delay>
+        De acuerdo, ¿no te convence la idea de ser asesorado por un bot? Jeje 😜
+        <delay>1</delay>
+        <srai>FUNCIONES</srai>
+    </template>
+</category>
+
+<!-- OBJETIVOS -->
+<!-- Se reducen 3 categorías a 1 con el uso de objetivos.set -->
+<!--
+<category>
+    <pattern>MANTENER PESO</pattern>
+    <that>Elige tu objetivo</that>
+    <template>
+        <think><set name="objetivo">Mantener peso</set></think>
+        <delay>1</delay>
+        Entonces debes ingerir una cantidad de calorías equivalente a las que gastas.
+        <delay>1</delay>
+        Pero, ¿sabes cuántas calorías gastas?
+    </template>
+</category>
+
+<category>
+    <pattern>SUBIR PESO</pattern>
+    <that>Elige tu objetivo</that>
+    <template>
+        <think><set name="objetivo">Subir de peso</set></think>
+        <delay>1</delay>
+        Entonces debes ingerir más calorías que las que gastas.
+        <delay>1</delay>
+        Pero, ¿sabes cuántas calorías gastas?
+    </template>
+</category>
+
+<category>
+    <pattern>BAJAR PESO</pattern>
+    <that>Elige tu objetivo</that>
+    <template>
+        <think><set name="objetivo">Bajar de peso</set></think>
+        <delay>1</delay>
+        Entonces debes ingerir menos calorías que las que gastas.
+        <delay>1</delay>
+        Pero, ¿sabes cuántas calorías gastas?
+    </template>
+</category>
+-->
+
+<category>
+    <pattern><set>objetivos</set></pattern>
+    <that>Elige tu objetivo</that>
+    <template>
+        <think><set name="objetivo"><map name="objetivos"><star/></map></set></think>
+        <delay>1</delay>
+        Para lograr el objetivo de <lowercase><get name="objetivo"/></lowercase> <br/>hay que saber tu balance energético.
+        <delay>1</delay>
+        Pero, ¿sabes cuántas calorías gastas?
+    </template>
+</category>
+
+<category>
+    <pattern>^ <set>objetivos</set> ^</pattern>
+    <that>Elige tu objetivo</that>
+    <template>
+        <think><set name="objetivo"><map name="objetivos"><star index="2"/></map></set></think>
+        <delay>1</delay>
+        Para lograr el objetivo de <lowercase><get name="objetivo"/></lowercase> <br/>hay que saber tu balance energético.
+        <delay>1</delay>
+        Pero, ¿sabes cuántas calorías gastas?
+    </template>
+</category>
+
+<!-- THAT solicitud kcal gastadas-->
+
+<category>
+    <pattern><set>afirmaciones</set></pattern>
+    <that>¿sabes cuántas calorías gastas</that>
+    <template>
+        <delay>1</delay>
+        ¡Perfecto! ¿cuántas kcal gastas?
+    </template>
+</category>
+<category>
+    <pattern><set>negaciones</set></pattern>
+    <that>¿sabes cuántas calorías gastas</that>
+    <template>
+        <delay>1</delay>
+        Pues tendremos que averiguarlo.<br/>
+        En este enlace obtendremos un dato orientativo:
+        <button>
+            <text>Calculadora</text>
+            <url>https://es.calcuworld.com/salud/metabolismo-basal/</url>
+        </button>
+        Cuando tengas el resultado dime, ¿cuántas kcal gastas?
+    </template>
+</category>
+<category>
+    <pattern><set>duda</set></pattern>
+    <that>¿sabes cuántas calorías gastas</that>
+    <template>
+        <delay>1</delay>
+        Pues tendremos que averiguarlo.<br/>
+        En este enlace obtendremos un dato orientativo:
+        <button>
+            <text>Calculadora</text>
+            <url>https://es.calcuworld.com/salud/metabolismo-basal/</url>
+        </button>
+        Cuando tengas el resultado dime, ¿cuántas kcal gastas?
+    </template>
+</category>
+<category>
+    <pattern><set>number</set></pattern>
+    <that>¿sabes cuántas calorías gastas</that>
+    <template>
+        <think><set name="TMB"><star/></set></think>
+        <delay>1</delay>
+        Que ímpetu, ¡me encanta! ¿sabes cúantas kcal ingieres?
+    </template>
+</category>
+
+    <!-- sinónimos-->
+
+<category>
+<pattern>^ <set>afirmaciones</set> ^</pattern><that>¿sabes cuántas calorías gastas</that>
+<template><srai><set name="afirmaciones"/><star index="2"></star></srai></template>
+</category>
+<category>
+<pattern>^ <set>negaciones</set> ^</pattern><that>¿sabes cuántas calorías gastas</that>
+<template><srai><set name="negaciones"/><star index="2"></star></srai></template>
+</category>
+<category>
+<pattern>^ <set>duda</set> ^</pattern><that>¿sabes cuántas calorías gastas</that>
+<template><srai><set name="duda"/></srai></template>
+</category>
+
+<!-- THAT respuesta kcal gastadas, contiene un LOOP gramático con that, solo acepta un número para continuar-->
+
+<category>
+    <pattern>*</pattern>
+    <that>¿cuántas kcal gastas</that>
+    <template>
+        <think>
+            <set name="numero"><srai>XISNUMBER <star/></srai></set>
+        </think>
+        <delay>1</delay>
+        <condition name="numero">
+            <li value="true">
+                <think><set name="TMB"><star/></set></think>
+                ¡Genial! Quemas aproximádamente unas <get name="TMB"><star/></get> kcal
+                <delay>1</delay>
+                Ahora tenemos que saber las que consumes. Parece sencillo pero... ¿sabes cúantas kcal ingieres?
+            </li>
+            <li value="false">
+                ¡Uuups! Eso no parece un número. Por favor, dime solo el número de calorías, ¿cuántas kcal gastas?
+            </li>
+            </condition>
+    </template>
+</category>
+
+<!-- THAT pregunta kcal ingeridas -->
+
+<category>
+    <pattern>SI</pattern>
+    <that>¿sabes cúantas kcal ingieres</that>
+    <template>
+        <delay>1</delay>
+        ¡Caray! Veo que esto no te pilla de nuevas, ¿cuántas kcal ingieres?
+    </template>
+</category>
+<category>
+    <pattern>NO</pattern>
+    <that>¿sabes cúantas kcal ingieres</that>
+    <template>
+        <delay>1</delay>
+        Es completamente normal que no lo sepas, ¡para eso estoy aqui!<br/>
+        <delay>1</delay>
+        Te voy a enseñar uno de mis grandes secretos: saber cuantificar la cantidad de kcal que ingieres cada día
+        <delay>1</delay>
+        El siguiente enlace te va a llevar a una web donde puedes registrarte de forma gratuita y anotar lo que comes
+        <delay>1</delay>
+        <button>
+            <text>MyFitnessPal</text>
+            <url>https://www.myfitnesspal.com/es/</url>
+        </button>
+        Vamos a hacer una prueba orientativa. Regístrate y anota todo lo que comiste ayer, ¿cuántas kcal ingieres?
+    </template>
+</category>
+
+<!-- THAT kcal ingeridas -->
+
+<category>
+    <pattern>*</pattern>
+    <that>¿cuántas kcal ingieres</that>
+    <template>
+        <think><set name="kcal"><star/></set></think>
+        <delay>1</delay>
+        ¡Excelente! Ya tenemos lo básico.<br/>
+        <delay>1</delay>
+        Vamos a realizar los cálculos... son un tanto complejos
+    </template>
+</category>
+
+<category>
+    <pattern><set>number</set></pattern>
+    <that>¿sabes cúantas kcal ingieres</that>
+    <template>
+        <think><set name="kcal"><star/></set></think>
+        <delay>1</delay>
+        ¡Impresionante! A eso le llamo tener las cosas claras 👌
+        <delay>1</delay>
+        Vamos a realizar los cálculos... son un tanto complejos
+    </template>
+</category>
+
+
+
+
+<category>
+    <pattern>^ <set>negaciones</set> ^</pattern>
+    <that>son un tanto complejos</that>
+    <template>
+        <delay>1</delay>
+        LLegados a este punto no acepto una negación por respuesta 👊 <br/>
+        <srai>calcular</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>*</pattern>
+    <that>son un tanto complejos</that>
+    <template><srai>calcular</srai></template>
+</category>
+
+<category>
+    <pattern>CALCULAR</pattern>
+    <!-- <that>¿quieres ver los resultados</that> -->
+    <template>
+        <think>
+            <set name="x"><srai>XSUBSTRING <get name="TMB"/> XS 0 XS 2</srai></set>
+            <set name="y"><srai>XSUBSTRING <get name="kcal"/> XS 0 XS 2</srai></set>
+            <!-- XLT <set>number</set> XS <set>number</set> -->
+            <set name="q1"><srai>XLT <get name="x"/> XS <get name="y"/></srai></set>
+        </think>
+            <delay>3</delay>
+        <condition name="q1">
+            <li value="true">
+                <think>
+                    <set name="z"><srai>XSUB <get name="y"/> XS <get name="x"/></srai></set>
+                </think>
+                Tienes un <set name="balance">superávit</set> de <set name="diferencia"><srai>XIMPLODE <get name="z"/> 00</srai></set> kcal.
+            </li>
+            <li value="false">
+                <think>
+                    <set name="z"><srai>XSUB <get name="x"/> XS <get name="y"/></srai></set>
+                </think>
+                Tienes un <set name="balance">déficit</set> de <set name="diferencia"><srai>XIMPLODE <get name="z"/> 00</srai></set> kcal.
+            </li>
+        </condition>
+            <delay>3</delay>
+        <reply>
+            <text>Estoy exhausto...</text>
+            <postback>RESULTADOS</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>*</pattern>
+    <that>LT SLASH TEXT GT LT POSTBACK GT RESULTADOS LT SLASH POSTBACK GT LT SLASH REPLY GT</that>
+    <template><srai>resultado</srai></template>
+</category>
+
+<category>
+    <pattern>RESULTADO</pattern>  
+    <template>
+        Para un humano este tipo de cálculos puede ser sencillo, pero no para un chatbot programado en AIML 😅
+        <delay>2</delay>
+        <condition name="objetivo">
+            <li value="Subir peso">
+                Para subir de peso es necesario un superávit calórico.
+                <delay>1</delay>
+                <condition name="balance">
+                    <li value="superávit">
+                        Estás comiendo <get name="diferencia"/> kcal más de las que gastas. <br/>
+                        Vas por buen camino para crecer muscularmente. <br/>
+                        Para evitar acumular demasiada grasa en el proceso, el superávit debe estar en torno a las 300 kcal diarias. <br/>
+                        ¡Así nos aseguramos que el peso ganado es de masa magra y no de grasa! 👊
+                    </li>
+                    <li value="déficit">
+                        Estás comiendo <get name="diferencia"/> kcal menos de las que gastas. <br/>
+                        Debes aumentar la ingesta de alimentos hasta situarte en un superávit aproximado de 300 kcal diarias. <br/>
+                        Así ganarás peso de forma gradual, ¡y nos aseguramos que el peso ganado es de masa magra y no de grasa! 👊
+                    </li>
+                </condition>
+            </li>
+            <li value="Bajar peso">
+                Para bajar de peso es necesario un déficit calórico.
+                <delay>1</delay>
+                <condition name="balance">
+                    <li value="superávit"></li>
+                        Estás comiendo <get name="diferencia"/> kcal de más... <br/>
+                        Debes bajar esas calorías hasta situarte en un déficit de entre 200 y 500 kcal diarias. <br/>
+                        ¡Con eso aseguraremos un pérdida de peso sana, progresiva y duradera!
+                    <li value="déficit"></li>
+                        Estás comiendo <get name="diferencia"/> kcal menos de las que gastas. <br/>
+                        El deficit adecuado para definir de forma sana está entre 200 y 500 kcal diarias. <br/>
+                        Nunca comas menos de 750 kcal de las que gasta, ¡déficits extremos evitan que el cuerpo oxide la grasa! <br/>
+                        ¡Asegúrate de situarte en ese rango!
+                </condition>
+            </li>
+            <li value="Mantener peso">
+                <delay>1</delay>
+                Debes corregir esa diferencia para alcanzar tu objetivo de mantener el peso a lo largo del tiempo 😎
+            </li>
+        </condition>
+            <delay>1</delay>
+            Te aconsejo utilizar la web de MyFitnessPal (o su APP móvil) para ajustar las cantidades de cada macronutriente. <br/>
+            <delay>1</delay>
+            La sección de macronutrientes está en desarrollo, pero puedes seguir aprendiendo conmigo con las secciones de mitos o jugando al quiz. <br/>
+            Si te puede la impaciencia, siempre puedes recurrir a un profesional humano, ¡te puedo aconsejar unos muy buenos! <br/>
+            <reply>
+                <text>Mitos</text>
+                <postback>Mitos</postback>
+            </reply>
+            <reply>
+                <text>Jugar al Quiz</text>
+                <postback>Quiz</postback>
+            </reply>
+            <reply>
+                <text>Profesionales</text>
+                <postback>Profesionales</postback>
+            </reply>
+    </template>
+</category>
+
+    <!-- sinónimos -->
+    
+<category><pattern>^ CALCULAR ^</pattern><template><srai>CALCULAR</srai></template></category>
+<category><pattern>^ CALCULA ^</pattern><template><srai>CALCULAR</srai></template></category>
+<category><pattern>^ CALCULO ^</pattern><template><srai>CALCULAR</srai></template></category>
+<category><pattern>^ RESULTADO ^</pattern><template><srai>RESULTADO</srai></template></category>
+<category><pattern>^ RESULTADOS ^</pattern><template><srai>RESULTADO</srai></template></category>
+
+<category><pattern>^ ESTA BIEN EL RESULTADO ^</pattern><template>Confía en mi, soy lento pero seguro 😜</template></category>
+
+    
+    <!-- objetivos directos -->
+    
+<category>
+    <pattern><set>objetivos</set></pattern>
+    <template>
+        <think>
+            <set name="objetivo">
+                <map name="objetivos"><star/></map>
+            </set>
+        </think>
+        <delay>1</delay>
+        <condition name="nombre">
+            <li value="*">
+            Perfecto <formal><get name="nombre"/></formal>, encantado de asesorarte 👍
+            Para lograr el objetivo de <lowercase><get name="objetivo"/></lowercase> 
+            hay que saber tu balance energético.
+            <delay>1</delay>
+            Pero, ¿sabes cuántas calorías gastas?
+            </li>
+            <li>
+            Así me gusta, ¡directo al grano! Será un placer asesorarte 👍
+            Aun no sé cómo te llamas, ¿cuál es tu nombre?    
+            </li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>¿cuál es tu nombre</that>
+        <template>
+        <think><set name="nombre"><star/></set></think>
+        <delay>1</delay>
+        Encantado de conocerte <get name="nombre"/> 👍
+        Para lograr el objetivo de <lowercase><get name="objetivo"/></lowercase> <br/>
+        hay que saber tu balance energético.
+        <delay>1</delay>
+        Pero, ¿sabes cuántas calorías gastas?
+    </template>
+</category>
+
+    <!-- sinónimos -->
+
+<category>
+    <pattern>^ <set>objetivos</set> ^</pattern>
+    <template><srai><set name="objetivo"/><star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ <set>objetivos</set> SHUR</pattern>
+    <template>
+        Para crecer como las setas... 4 litros de leche al día shur 😎
+        <delay>1</delay>
+        <srai><set name="objetivo"/><star index="2"/></srai>
+    </template>
+</category>
+
+
+</aiml>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->    
+    
+<category>
+    <pattern>DIME</pattern>
+    <template>¡Oh!, ¿libertad para hablar? Pues toma mito <srai>MITO</srai></template>
+</category>
+<category>
+    <pattern>DIME TU</pattern>
+    <template><srai>DIME</srai></template>
+</category>
+<category>
+    <pattern>DIMELO</pattern>
+    <template>¿El qué?</template>
+</category>
+
+<category>
+    <pattern>LENGUAJE SOEZ</pattern>
+    <template>Lo siento, no respondo al lenguaje soez</template>
+</category>
+<category>
+    <pattern># <set>antitroll</set> #</pattern>
+    <template><srai>LENGUAJE SOEZ</srai></template>
+</category>
+<category>
+    <pattern># SEXO #</pattern>
+    <template>Eso es cosa de humanos</template>
+</category>
+
+<category>
+    <pattern>TI</pattern>
+    <template>
+        <random>
+            <li>Pareceré pequeño, pero levanto 185 kilo píxeles</li>
+            <li>There is no reason to be alive if you can't do deadlift</li>
+            <li>La auténtica salud</li>
+            <li>Forocoches is not your army</li>
+            <li>Soy natty, no consumo roids</li>
+            <li>Espero que me estés preguntando mientras bombeas el brazo con una mancuerna</li>
+        </random>
+    </template>
+</category>
+<category>
+    <pattern>TU</pattern>
+    <template><srai>TI</srai></template>
+</category>
+<category>
+    <pattern>^ CHISTE ^</pattern>
+    <template><srai>TI</srai></template>
+</category>
+<category>
+    <pattern>_ <set>preposiciones</set> TI</pattern>
+    <template><srai>TI</srai></template>
+</category>
+<category>
+    <pattern>^ <set>preposiciones</set> <bot name="name" /></pattern>
+    <template><srai>TI</srai></template>
+</category>
+
+<category>
+    <pattern>^ MI</pattern>
+    <template>No estoy programada para almacenar muchos datos, pero no recuerdo a nadie que haya superado todos mis quiz. ¡Te reto!</template>
+</category>
+
+<category>
+    <pattern>^ MAROMO ^</pattern>
+    <template>Uuuuh tenemos un machote 😎 </template>
+</category>
+
+<category>
+    <pattern># <set>insultos</set> #</pattern>
+    <template>
+        <random>
+            <li>Uuuuh tenemos un machote 😎</li>
+            <li>Cuéntame más</li>
+            <li>Ajam...</li>
+            <li>Lo estoy anotando en la lista de las cosas que me importan un...</li>
+            <li>Se te ve muy valiente insultado desde la pantalla</li>
+            <li>¿Eso me lo dices desde la barra del bar?</li>
+        </random>
+    </template>
+</category>
+
+</aiml>

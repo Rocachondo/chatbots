@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+<!-- OTROS DATOS -->
+<!--
+<category>
+    <pattern>asdad</pattern>
+    <template>Ahora vamos a recolectar una serie de datos para hacer un seguimiento adecuado</template>
+</category>
+<category>
+    <pattern>f *</pattern>
+    
+    <template>
+        ¿Eres hombre o mujer?
+    </template>
+</category>
+<category>
+    <pattern>a *</pattern> -->
+    <!-- <that>¿Eres hombre o mujer</that> -->
+<!--    <template>
+        <think><set name="genero"><star/></set></think>
+        ¿Edad?
+    </template>
+</category>
+<category>
+    <pattern><set>number</set></pattern>
+    <that>¿Edad</that>
+        <think><set var="peso"><star/></set></think>
+    <template>¿Cuánto pesas? En Kg, redondea a un número entero</template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>redondea a un número entero</that>
+        <think><set name="peso"><star/></set></think>
+    <template>¿Cuánto mides? En centímetros</template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>En centímetros</that>
+        <think><set name="altura"><star/></set></think>
+    <template>
+        <delay>1</delay>
+        Bien, con ésto vamos a calcular tu IMC, que es el índice de masa corporal
+        <delay>3</delay>
+    </template>
+</category>
+<category>
+    <pattern>c</pattern>
+    <template>
+        <delay>1</delay>
+        El IMC en es un indicador genérico para fines estadísticos. <br/>
+        Puede servir como referencia inicial, pero será relevante en el seguimiento. <br/>
+        <delay>1</delay>
+        De hecho, ni siquiera el peso es el mejor valor de referencia...
+        <delay>1</delay>
+        El más relevante serán las medidas corporales. Así que, coge una cinta métrica y mi míde los siguientes perímetrol corporales:
+        <ol>
+            <li>Pecho</li>
+            <li>Brazo</li>
+            <li>Cintura</li>
+            <li>Ombligo</li>
+            <li>Muslo</li>
+        </ol>
+        Anotalos, ¡y guárdalos! Mi memoria puede ser un tanto... volátil 😆
+        <delay>1</delay>
+        Bien, dime tus medidas en centímetros. Empezamos por el pecho:
+    </template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>Empezamos por el pecho</that>
+        <think><set name="pecho"><star/></set></think>
+    <template>Ahora el contorno del brazo:</template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>Ahora el contorno del brazo</that>
+        <think><set name="brazo"><star/></set></think>
+    <template>Seguimos con la cintura:</template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>Seguimos con la cintura</that>
+        <think><set name="cintura"><star/></set></think>
+    <template>Ahora el ombligo, ¡pero no metas barriga eh!</template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>¡pero no metas barriga eh</that>
+        <think><set name="ombligo"><star/></set></think>
+    <template>Por último, el contorno del muslo a media altura:</template>
+</category>
+<category>
+    <pattern>*</pattern>
+    <that>el contorno del muslo a media altura</that>
+        <think><set name="muslo"><star/></set></think>
+        <template>
+        ¡Estupendo! Has dado el primer paso para alcanzar tu objetivo: ¡has establecido el punto de partida!
+        <delay>1</delay>
+        
+    </template>
+</category>
+
+
+<category>
+    <pattern>asd</pattern>
+    
+        <set name="objetivo">Pepe</set><br/>
+        <set name="objetivo">Perder peso</set><br/>
+        <set name="genero">Hoombre</set><br/>
+        <set name="edad">34</set><br/>
+        <set name="peso">84</set><br/>
+        <set name="altura">180</set><br/>
+    
+    <template>
+        Aquí te muestro tus datos:<br/>
+        Nombre: <get name="nombre"/><br/>
+        Objetivo: <get name="objetivo"/> <br/>
+        Sexo: <get name="genero"/> <br/>
+        Edad: <get var="edad"/> <br/>
+        Peso: <get name="peso"/> <br/>
+        Altura: <get name="altura"/> <br/>
+    </template>
+</category>
+
+<category>
+    <pattern>d</pattern>
+    <template><get name="nombre"/> es <get name="genero"/></template>
+</category>
+-->
+</aiml>

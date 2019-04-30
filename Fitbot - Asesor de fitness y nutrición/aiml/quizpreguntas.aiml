@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+        
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+
+<topic name="quiz">
+	
+<category>
+    <pattern>0001</pattern>
+    <template>
+        Id: 0001
+        <delay>1</delay>
+        Estiramientos estáticos de más de 1 minuto pueden limitar el rendimiento antes de un ejercicio. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+
+<category>
+    <pattern>0002</pattern>
+    <template>
+        Id: 0002
+        <delay>1</delay>
+        Las mujeres deben entrenar con poco peso para evitar ponerse grandes.
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0003</pattern>
+    <template>
+        Id: 0003
+        <delay>1</delay>
+        Si eres mujer, levantar peso te hace ganar peso. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0004</pattern>
+    <template>
+        Id: 0004
+        <delay>1</delay>
+        El cardio quema más calorías que el entrenamiento con pesos. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0005</pattern>
+    <template>
+        Id: 0005
+        <delay>1</delay>
+        El entrenamiento con pesas es más peligroso que otros entrenamientos y deportes. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0006</pattern>
+    <template>
+        Id: 0006
+        <delay>1</delay>
+        Se puede perder grasa sin perder rendimiento. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0007</pattern>
+    <template>
+        Id: 0007
+        <delay>1</delay>
+        Eliminar las grasas de la dieta hará perder más peso. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0008</pattern>
+    <template>
+        Id: 0008
+        <delay>1</delay>
+        Una dieta con ciclado de calorías, donde se alternan algunos días de superávit calórico con los de déficit, es óptima para bajar por debajo 10% de grasa. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0009</pattern>
+    <template>
+        Id: 0009
+        <delay>1</delay>
+        Las partes “grasas” del cuerpo donde menos sangre llegua serán aquellas donde menos trigliceridos se liberan y por tanto donde más grasa se almacena. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0010</pattern>
+    <template>
+        Id: 0010
+        <delay>1</delay>
+        Al entrenar fuerza, ésta se incrementa debido a adaptaciones neuronales específicas. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0011</pattern>
+    <template>
+        Id: 0011
+        <delay>1</delay>
+        Factores nervisos: el reclutamiento de las unidades motoras sigue la ley de Henneman.
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0012</pattern>
+    <template>
+        Id: 0012
+        <delay>1</delay>
+        Los suplementos de melatonina pueden ayudar de manera segura y eficaz para restablecer el equilibrio del ritmo circadiano del cuerpo.
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0013</pattern>
+    <template>
+        Id: 0013
+        <delay>1</delay>
+        Los BCAA's es mejor suplemento que la proteína. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0014</pattern>
+    <template>
+        Id: 0014
+        <delay>1</delay>
+        La mujer deportista obtiene mayores beneficios con una dieta alta en grasa. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0015</pattern>
+    <template>
+        Id: 0015
+        <delay>1</delay>
+        Los batidos de proteína son un buen sustituto de una comida. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0016</pattern>
+    <template>
+        Id: 0016
+        <delay>1</delay>
+        El sello "Creapure" de la creatina es un simple reclamo publicitario.
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0017</pattern>
+    <template>
+        Id: 0017
+        <delay>1</delay>
+        El ayuno intermitente es más efectivo para perder grasa que el déficit calórico.
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0018</pattern>
+    <template>
+        Id: 0018
+        <delay>1</delay>
+        La suplementación a largo plazo con fibra fermentable incrementa la producción de hormonas que intervienen en el proceso de saciedad.
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0019</pattern>
+    <template>
+        Id: 0019
+        <delay>1</delay>
+        Los abdominales se marcan sólo si se entrenan a diario. 
+        <reply><text>Verdadero</text><postback>0</postback></reply>
+        <reply><text>Falso</text><postback>1</postback></reply>
+    </template>
+</category>
+<category>
+    <pattern>0020</pattern>
+    <template>
+        Id: 0020
+        <delay>1</delay>
+        Tener unos abdominales fuertes evitan el riesgo de lesión. 
+        <reply><text>Verdadero</text><postback>1</postback></reply>
+        <reply><text>Falso</text><postback>0</postback></reply>
+    </template>
+</category>
+
+</topic>
+	
+</aiml>

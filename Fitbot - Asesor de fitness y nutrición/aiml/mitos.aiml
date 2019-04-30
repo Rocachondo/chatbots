@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    3. MITOS en mitos.aiml                                 -->
+
+<category>
+    <pattern>INFO MITOS</pattern>
+    <template>
+        <think><set name="topic">mitos</set></think>
+        Pulsa el enlace o escribe MITO para que te desvele algunos mitos que existen en torno a la nutrición y el mundo del fitness 👊
+        <reply>
+            <text>Mito</text>
+            <postback>Mito</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>MITO</pattern>
+    <template>
+    <think><set name="topic">mitos</set></think>
+    <random>
+    <li>MITO: La grasa engorda.
+        <delay>1</delay>
+        FALSO, es un macronutriente imprescindible para el buen funcionamiento metabólico y hormonal. <br/>
+        De hecho, las dietas altas en grasas (grasas saludables obviamente) son las más efectivas para perder grasa corporal.
+    </li>
+    <li>MITO: Los hidratos de carbono por la noche engordan.
+        <delay>1</delay>
+        FALSO, un macronutriente no es el responsable de ganar peso, si no el superávit calórico.<br/>
+        Además, el cuerpo no entiende de horarios, solo de nutrientes ingeridos. <br/>
+        Da igual en qué momento del día se tomen, lo importante es que la cantidad sea la adecuada.
+    </li>
+    <li>MITO: El exceso de proteína daña los riñones.
+        <delay>1</delay>
+        FALSO, se han realizado muchos estudios con dosis mantenidas de 3,5 gr de proteína por Kg de peso corporal. <br/>
+        En ellos se observa que no hay ningún trastorno ni disminución de la función hepática. <br/>
+        Para una persona de 80 kg, esa dosis equivaldría a comer 1,4 Kg de pollo magro a diario, ¿conoces a alguien que coma esa cantidad?<br/>
+        Otra cosa es si hablamos de deportistas que consumen más de 6 gr/Kg y hace uso de sustancias exógenas... ¿el daño lo causa la proteina o esteroides anabólicos?
+    </li>
+    <li>MITO: La creatina daña el hígado.
+        <delay>1</delay>
+        FALSO, el monohidrato de creatina es un complejo de 3 aminoácidos que se lleva utilizando en el deporte de élite desde las Olimpiadas de 1992.<br/>
+        Es el suplemento más estudiado con diferencia, y ningún estudio serio o refutado que cause daño alguno.<br/>
+        La dosis óptima de consumo es de 1 gr por Kg de masa corporal (no por que pueda causar daño, si no que más cantidad no es asimilada por el organismo).</li>
+    <li>MITO: La creatina produce alopecia.
+        <delay>1</delay>
+        FALSO, el monohidrato de creatina es un complejo de 3 aminoácidos que se lleva utilizando en el deporte de élite desde las Olimpiadas de 1992.<br/>
+        Es el suplemento más estudiado con diferencia, y ningún estudio serio o refutado que cause daño alguno.<br/>
+        La alopecia puede ser acelerada por el uso de esteroides anabólicos. Los consumidores de estas sustancias, también toman creatina, pero no es ésta la responsable.</li>
+    <li>MITO: La yema de huevo sube el colesterol.
+        <delay>1</delay>
+        FALSO, ningún alimento en sí hace subir el colesterol. El colesterol que se consume a través de la alimentación no hace subir el colesterol o trigliceridos del cuerpo.<br/>
+        El colesterol corporal es una respuesta del cuerpo a los hábitos, especialmente el sedentarismo, aunque una mala dieta también puede influir.<br/>
+        Sin embargo, las dietas altas en grasa como la cetogénica, donde el 70% de las kcal que se consumen son grasas, no hacen subir el colesterol, de hecho, lo bajan.<br/>
+        Por tanto, y respaldado por más de 17 meta estudios, el colesterol no sube el colesterol. Se pueden tomar 3 huevos enteros al día tranquilamente.
+    </li>
+    <li>MITO: Los batidos de proteina te hacen más fuerte.
+        <delay>1</delay>
+        FALSO, los batidos no son mágicos... 
+        Son un sustitutivo de la comida, en este caso de las proteínas, donde se varía el % de este y otros macronutrientes según la marca, tipo, gama...<br/>
+        Básicamente, los batidos son comida. Comer la suficiente cantidad ayudará a reparar las fibras musculares destruidas durante el entrenamiento.<br/>
+        Con el suficiente descanso y con tiempo, el cuerpo desarrollará la adaptaciones necesarias al entrenamiento y se hará más fuerte.<br/>
+        Pero eso es parte de un proceso largo, lento y complejo, y tomar batidos no es decisivo en éste. De hecho, no son en absoluto necesarios para hacerse más fuerte.
+    </li>
+    <li>MITO: La suplementación con L-Carnitina hace quemar más grasa.
+        <delay>1</delay>
+        FALSO, la L-Carnitina es una sustancia que produce el propio organismo e interviene en la degradación de los adipocitos para la obtención de energía a través de la grasa.<br/>
+        Si bien es cierto que en estudios en entornos celulares aislados se comprueba que más L-Carnitina aumenta la oxidación de las grasas, en el cuerpo humano no ocurre así.<br/>
+        La L-Cartinia utiliza una transportadores metabólicos compartidos con otras sustancias y, aunque haya más L-Carnitina en el organismo, esta no podrá llegar nunca a su destino.
+    </li>
+    <li>MITO: Quemar grasa
+        <delay>1</delay>
+        FALSO, la grasa no se quema, se oxida.
+    </li>
+    <li>MITO: Cardio para quemar grasa.
+        <delay>1</delay>
+        FALSO, la grasa no se quema, se oxida. Para que se produzca el proceso de oxidación, es necesaria la aportación de oxígeno al torrente sanguineo para que llegue a la células.<br/>
+        Sin embargo, al hacer a cierta intensidad y las pulsaciones suben por encima de 120 ppm, el oxígeno que llega a los adipocitos es muy escaso.<br/>
+        El proceso de obtención de energía a través de las grasas se ver mermado drásticamente, tomando el protagonismo las reservas de glucógeno muscular.<br/>
+        Los ejercicio que más grasa oxidan son los básicos en rangos de fuerza (pocas repeticiones y mucho peso) y los intervalos de alta intensidad (HIIT).<br/>
+        La actividad que más grasa oxida es mantenerse activo, como caminar, subir escaleras, moverse a intervalos frecuentes...<br/>
+        El cuerpo está oxidando grasa constantemente a lo largo del día, es el combustible principal de donde obtiene energía.
+    </li>
+    <li>MITO: Correr es el ejercicio que quema más grasa.
+        <delay>1</delay>
+        FALSO, los ejercicio que más grasa oxidan son los básicos en rangos de fuerza (pocas repeticiones y mucho peso) y los intervalos de alta intensidad (HIIT).<br/>
+        La actividad que más grasa oxida es mantenerse activo, como caminar, subir escaleras, moverse a intervalos frecuentes...<br/>
+        El cuerpo está oxidando grasa constantemente a lo largo del día, es el combustible principal de donde obtiene energía.
+    </li>
+    <li>MITO: Si quiero perder grasa tengo que hacer mucho cardio.
+        <delay>1</delay>
+        FALSO, correr es un ejercicio que obtiene su energía del glucógeno muscular. Una vez gastado, y ante el estado anaeróbico del cuerpo, se acentuará la degradación proteica.<br/>
+        Es decir, el cuerpo descompondrá fibras musculares para obtener lactato, que es una forma de energía, en lugar de obtenerlo de las grasas. <br/>
+        Básicamente, la obtención de energía de las grasas con el cardio es muy baja, y el riesgo de perder masa muscular alto.<br/>
+        Para perder grasa: entrenamiento de pesas con rangos de fuerza, dieta con déficit calórico, descanso y tiempo.
+    </li>
+    <li>MITO: Las mujeres no pueden entrenar igual que los hombres.
+        <delay>1</delay>
+        FALSO, mujeres y hombres deben entrenar igual. No hay ejercicios concretos ni rutinas que beneficien a un género u otro.
+    </li>
+    <li>MITO: Las mujeres deben entrenar con poco peso o se pondrán como Hulk.
+        <delay>1</delay>
+        FALSO, las mujeres segregan 7 veces menos testosterona que el hombre. Por tanto, a igualdad de cargas, la hipertrofia muscular será menor.<br/>
+        Entrenar por sistema con poco peso y muchas repeticiones es un error, tanto para mujeres como hombres.
+    </li>
+    <li>MITO: Para definir hay que entrenar con poco peso y pocas repeticiones.
+        <delay>1</delay>
+        FALSO, esa afirmación son reminiscencias de la época oscura del culturismo. Para deportistas que consumen esteroides anabólicos cuya finalidad es la estética, puede tener sentido.<br/>
+        En el resto de contextos no tiene ningún sentido. En todo caso, siempre, hombre y mujer, deben entrenar con cargas pesadas, tanto para definir como para ganar volumen y fuerza.</li>
+    <li>MITO: Hacer muchos abdominales para marcarlos.
+        <delay>1</delay>
+        FALSO, los abdominales se hacen en la cocina, no en el gimnasio.<br/> 
+        Que sean visibles es resultado de un bajo % de grasa corporal, y eso se obtiene a través del déficit calórico de la dieta.
+    </li>
+    <li>MITO: Hacer crunch abdominal para que se hagan más grandes y se marquen más.
+        <delay>1</delay>
+        FALSO, los abdominales son un tipo de tejido conectivo y su capacidad de hipertrofia es escasa. Que se queden más congestionados tras entrenarlos no los hará más grandes.<br/>
+        Que se marque el conocido six-pack viene de un bajo % graso, no por entrenarlos más.<br/>
+        Además, el crunch abdominal es un ejercicio poco interesante, que puede resultar lesivo y que genera poco beneficio funcional al grupo muscular.
+    </li>
+    <li>MITO: Quemar grasa localizada.
+        <delay>1</delay>
+        FALSO, no existe la quema de grasa, la grasa no se quema, se oxida, y tampoco se puede oxidar de forma localizada.<br/>
+        No hay ningún ejercicio que oxide grasa localizada.<br/>
+        No hay ningún alimento o suplemento que oxide grasa localicada.<br/>
+        No hay ningún entrenamiento o rutiene que oxide grasa localizada.<br/>
+        En defininiva, es un mito, o más bien, un engaño publicitario en toda regla.
+    </li>
+    </random>
+        <reply>
+            <text>Otro mito</text>
+            <postback>Mito</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>TODOS LOS MITOS SON FALSOS</pattern>
+    <template>Todos los mitos son falsos, por eso se llaman mitos</template>
+</category>
+
+<!-- sinónimos -->
+
+<category><pattern>^ MITO ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ MITOS ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ MAS MITOS</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ MÁS MITOS</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ OTRO MITO</pattern><template><srai>MITO</srai></template></category>
+
+<topic name="mitos">
+
+<category><pattern>^ MAS ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ MÁS ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ OTRO ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ SIGUE ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ CONTINUA ^</pattern><template><srai>MITO</srai></template></category>
+<category><pattern>^ <set>afirmaciones</set> ^</pattern><template><srai>MITO</srai></template></category>
+
+</topic>
+
+<category><pattern>^ <set>hablame</set> ^ MITO</pattern><template><srai>INFO MITOS</srai></template></category>
+<category><pattern>^ <set>hablame</set> ^ MITOS</pattern><template><srai>INFO MITOS</srai></template></category>
+
+<category><pattern>^ <set>hablame</set> UN MITO</pattern><template><srai>MITO</srai></template></category>
+
+<category><pattern>^ MITO VERDADERO ^</pattern><template>No. <srai>TODOS LOS MITOS SON FALSOS</srai></template></category>
+<category><pattern>^ MITOS VERDADEROS ^</pattern><template>No. <srai>TODOS LOS MITOS SON FALSOS</srai></template></category>
+
+</aiml>

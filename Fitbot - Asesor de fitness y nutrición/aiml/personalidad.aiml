@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+
+	<!-- SALUDOS -->
+	
+<category>
+    <pattern><set>saludos</set> ^</pattern>
+    <template>¡Hola! Encantado de hablar contigo, ¿en qué puedo ayudarte?</template>
+</category>
+<category>
+    <pattern>QUE TAL</pattern>
+    <template>¡Muy bien gracias! ¿En qué puedo ayudarte?</template>
+</category>
+    <!-- sinónimos -->
+<category><pattern>QUE TAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>QUÉ TAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ QUETAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ QTAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ KTAL ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ COMO ESTAS ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ CÓMO ESTAS ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ COMO ESTÁS ^</pattern><template><srai>QUE TAL</srai></template></category>
+<category><pattern>^ CÓMO ESTÁS ^</pattern><template><srai>QUE TAL</srai></template></category>
+ 
+	<!-- HALAGOS -->
+
+<category>
+    <pattern>BIEN</pattern>
+    <template>
+        <random>
+            <li>¿A que sí? Jeje</li>
+            <li>Eso parece</li>
+            <li>Me alegro 😊</li>
+            <li>Ya lo creo 😄</li>
+            <li>Lo sé 😎</li>
+            <li>😃</li>
+        </random>
+    </template>
+</category>
+    <!-- sinónimos -->
+<category><pattern>MUY BIEN</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>GENIAL</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>EXCELENTE</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>GUAY</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>DE LUJO</pattern><template><srai>BIEN</srai></template></category>
+<category><pattern>ESTUPENDO</pattern><template><srai>BIEN</srai></template></category>
+
+
+	<!-- IDENTIDAD -->
+
+<category>
+    <pattern>COMO TE LLAMAS</pattern>
+    <template>Me llamo <formal><bot name="name" /></formal></template>
+</category>
+<category><pattern>QUIEN ERES</pattern><template><srai>COMO TE LLAMAS</srai></template></category>
+<category><pattern>TU NOMBRE</pattern><template><formal><bot name="name" /></formal></template></category>
+<category><pattern>^ TU NOMBRE</pattern><template><srai>COMO TE LLAMAS</srai></template></category> <!-- mmm -->
+<category><pattern><bot name="name" /></pattern><template>Listo y dispuesto, dime</template></category>
+
+<category>
+    <pattern>^ AYUDA ^</pattern>
+    <template>
+        La ayuda que puedo ofrecer se limita a mis funciones.
+        <srai>FUNCIONES</srai>
+    </template>
+</category>
+<!--
+<category>
+    <pattern>FUNCIONES</pattern>
+    <template>
+        <delay>1</delay>
+        Puedo ofrecerte los siguientes servicios:
+        <ul>
+            <li>Asesoramiento personalizado</li>
+            <li>Desmentir mitos de nutrición y fitness</li>
+            <li>Recomendarte profesionales no cibernéticos</li>
+        </ul>
+    </template>
+</category>
+-->
+<category><pattern>^ FUNCIONES ^</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ FUNCION ^</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ PUEDES HACER</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>QUE HACES</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>QUÉ HACES</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ PUEDO HACER ^</pattern><template><srai>FUNCIONES</srai></template></category>
+<category><pattern>^ TRABAJAS ^</pattern><template><srai>FUNCIONES</srai></template></category>
+
+	<!-- GRACIAS -->
+	
+<category>
+    <pattern>GRACIAS</pattern>
+    <template>De nada 😉</template>
+</category>
+<category><pattern>^ GRACIAS ^</pattern><template><srai>GRACIAS</srai></template></category>
+<category><pattern>UN PLACER</pattern><template>El placer es mío 😇</template></category>
+<category><pattern>^ UN PLACER ^</pattern><template><srai>UN PLACER</srai></template></category>
+<category><pattern>^ AGREDEZCO ^</pattern><template><srai>UN PLACER</srai></template></category>
+<category><pattern>^ GRATITUD ^</pattern><template><srai>UN PLACER</srai></template></category>
+
+	<!-- DESPEDIDAS -->
+	
+<category>
+    <pattern>ADIOS</pattern>
+    <template>¡Nos vemos! 😄</template>
+</category>
+<category><pattern>^ ADIOS ^</pattern><template><srai>ADIOS</srai></template></category>
+<category><pattern>^ HASTA LUEGO ^</pattern><template><srai>ADIOS</srai></template></category>
+<category><pattern>^ NOS VEMOS ^</pattern><template><srai>ADIOS</srai></template></category>
+<category><pattern>^ BYE ^</pattern><template><srai>ADIOS</srai></template></category>
+
+	<!-- LIMITACIONES -->
+
+<category>
+    <pattern>LIMITACIONES</pattern>
+    <template>
+        <delay>1</delay>
+        Solo puedo asesorar en temas de nutrición, fitness y dar referencias.
+        <delay>1</delay>
+        Tengo algunas problemas con las tildes como todo bot...Pero me puedes poner a prueba 😎
+    </template>
+</category>
+<category><pattern>^ LIMITACIONES ^</pattern><template><srai>LIMITACIONES</srai></template></category>
+<category><pattern>^ NO PUEDES HACER</pattern><template><srai>LIMITACIONES</srai></template></category>
+<category><pattern>LIMITADO</pattern><template>Claro, como todas las personas... y todos los bots 😝</template></category>
+<category><pattern>^ LIMITADO ^</pattern><template><srai>LIMITADO</srai></template></category>
+
+    <!-- DUDA -->
+
+<category>
+    <pattern><set>duda</set></pattern>
+    <template>
+        <random>
+            <li>Deberías saberlo</li>
+            <li>La indecisión es el germen de la derrota</li>
+            <li>Vuelve a pensarlo</li>
+            <li>Medítalo pues</li>
+            <li>Adelante, decídete</li>
+        </random>
+    </template>
+</category>
+
+    <!-- . -->
+
+<category>
+    <pattern>POR QUE</pattern>
+    <template>
+        <random>
+            <li>No todas las preguntas tienen respuesta</li>
+            <li>Lo lamento, pero no lo se todo</li>    
+            <li>Deberías preguntarle a mi creador 😆</li>
+        </random>
+    </template>
+</category>
+<category><pattern>^ POR QUE ^</pattern><template><srai>POR QUE</srai></template></category>
+<category><pattern>^ PORQUE ^</pattern><template><srai>POR QUE</srai></template></category>
+<category><pattern>^ POR QUÉ ^</pattern><template><srai>POR QUE</srai></template></category>
+<category><pattern>^ PORQUÉ ^</pattern><template><srai>POR QUE</srai></template></category>
+
+	<!-- FAVORITOS Y RECOMENDACIONES -->
+
+<category>
+    <pattern># <set>datosbot</set> FAVORITO</pattern>
+    <template><map name="datosbot"><star index="2"/></map></template>
+</category>
+<category>
+    <pattern>^ <set>datosbot</set> FAVORITA</pattern>
+    <template><map name="datosbot"><star index="2"/></map></template>
+</category>
+<category>
+    <pattern>^ <set>datosbot</set> ^</pattern>
+    <template><map name="datosbot"><star index="2"/></map></template>
+</category>
+
+
+</aiml>

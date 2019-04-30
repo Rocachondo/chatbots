@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+
+<category>
+    <pattern>QUIZ</pattern>
+    <template>
+        <think><set name="preguntas">0</set></think>
+        ¿Quieres poner a prueba tus conocimientos? Empecemos el <formal><set name="topic">quiz</set></formal> de nutrición y fitness 😎
+        <delay>1</delay>
+        Si no entiendes alguna pregunta, te la explicaré al final del cuestionario 👍
+        <delay>1</delay>
+        Empiezas con <set name="puntos">0</set> puntos, ¡suerte!<br/>
+        <srai>SIGUIENTE PREGUNTA</srai>
+    </template>
+</category>
+
+<topic name="quiz">
+
+<category>
+    <pattern>QUIZ2</pattern>
+    <template>
+        <think><set name="preguntas">0</set></think>
+        <delay>1</delay>
+        Si no entiendes alguna pregunta, te la explicaré al final del cuestionario 👍
+        <delay>1</delay>
+        Empiezas con <set name="puntos">0</set> puntos, ¡suerte!<br/>
+        <srai>SIGUIENTE PREGUNTA</srai>
+    </template>
+</category>
+
+    <!--    Preguntas en -->
+    <!--    6.1 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+
+    <!-- Acierto -->
+    
+<category>
+    <pattern>1</pattern>
+    <template>
+        <think>
+            <!-- <set name="preguntas"><srai>XADD <get name="preguntas"/> XS 1</srai></set> -->
+            <set name="puntos"><srai>XADD <get name="puntos"/> XS 1</srai></set>
+        </think>
+        <random>
+            <li>¡Bien! </li>
+            <li>¡Genial! </li>
+            <li>¡Sigue así! </li>
+            <li>¡Excelente! </li>
+            <li>¡Yeah! </li>
+            <li>¡Correcto! </li>
+            <li>¡Buena respuesta! </li>
+        </random>
+        Puntos: <get name="puntos"/>
+        <reply>
+            <text>Siguiente</text>
+            <postback>Siguiente pregunta</postback>
+        </reply>
+    </template>
+</category>
+
+    <!-- Fallo -->
+    
+<category>
+    <pattern>0</pattern>
+    <template>
+        <think>
+            <!-- <set name="preguntas"><srai>XADD <get name="preguntas"/> XS 1</srai></set> -->
+            <set name="puntos"><srai>XADD <get name="puntos"/> XS 0</srai></set>
+        </think>
+        <random>
+            <li>Mal... </li>
+            <li>Error... </li>
+            <li>No era esa... </li>
+            <li>😐 </li>
+            <li>Nooooo... </li>
+        </random>
+        Puntos:  <get name="puntos"/>
+        <reply>
+            <text>Siguiente</text>
+            <postback>Siguiente pregunta</postback>
+        </reply>
+    </template>
+</category>
+
+    <!-- Siguiente pregunta -->
+
+<category>
+    <pattern>SIGUIENTE PREGUNTA</pattern>
+    <template>
+    <think><set name="preguntas"><srai>XADD <get name="preguntas"/> XS 1</srai></set></think>
+        <condition name="preguntas">
+        <li value="6"><srai>FIN</srai></li>
+        <li>
+            <random>
+            <li><srai>0001</srai></li>
+            <li><srai>0001</srai></li>
+            <li><srai>0002</srai></li>
+            <li><srai>0003</srai></li>
+            <li><srai>0004</srai></li>
+            <li><srai>0005</srai></li>
+            <li><srai>0006</srai></li>
+            <li><srai>0007</srai></li>
+            <li><srai>0008</srai></li>
+            <li><srai>0009</srai></li>
+            <li><srai>0010</srai></li>
+            <li><srai>0011</srai></li>
+            <li><srai>0012</srai></li>
+            <li><srai>0013</srai></li>
+            <li><srai>0014</srai></li>
+            <li><srai>0015</srai></li>
+            <li><srai>0016</srai></li>
+            <li><srai>0017</srai></li>
+            <li><srai>0018</srai></li>
+            <li><srai>0019</srai></li>
+            <li><srai>0020</srai></li>
+            </random>
+        </li>
+        </condition>
+    </template>
+</category>
+
+    <!-- Fin del Quiz -->
+
+<category>
+    <pattern>FIN</pattern>
+    <template>
+        Has obtenido <get name="puntos"/> de 5
+        <delay>1</delay>
+        <condition name="puntos">
+            <li value="0">Pfff...Tenemos mucho trabajo por delante, ¡sigue jugando o hablando conmigo para aprender más! 😅</li>
+            <li value="1">¡Que mal! Veo que te queda mucho por aprender, ¡sigue jugando o hablando conmigo para aprender más! 😃</li>
+            <li value="2">Bueno... necesitas jugar más, ¡recuerda también consultar la sección de mitos! 😊</li>
+            <li value="3">¡Bien! Veo que tienes conocimientos en la materia, ¡sigue así! 😎</li>
+            <li value="4">¡Muy bien! Tienes bastantes conocimientos del tema 😄</li>
+            <li value="5">¡Excelente! Demuestras tener conocimientos avanzados, ¡dentro de poco podrás enseñarme tú a mí! 😇</li>
+        </condition>
+        <think>
+            <set name="preguntas"></set>
+            <set name="puntos"></set>
+        </think>
+        <reply>
+            <text>Volver a jugar</text>
+            <postback>Volver a jugar</postback>
+        </reply>
+        <reply>
+            <text>Dejar de jugar</text>
+            <postback>Dejar de jugar</postback>
+        </reply>
+        <reply>
+            <text>Explícame la Id...</text>
+            <postback>EXPLICAME</postback>
+        </reply>
+        <reply>
+            <text>Enséñame mitos</text>
+            <postback>INFO MITOS</postback>
+        </reply>
+    </template>
+</category>
+
+<category>
+    <pattern>VOLVER A JUGAR</pattern>
+    <template><srai>QUIZ2</srai></template>
+</category>
+<category>
+    <pattern>DEJAR DE JUGAR</pattern>
+    <template>¿Qué quieres hacer ahora? <srai>FUNCIONES</srai></template>
+</category>
+<category>
+    <pattern>EXPLICAME</pattern>
+    <template>
+        <think><set name="topic"></set></think>
+        ¿Qué pregunta quieres que te explique? Dime la Id
+    </template>
+</category>
+
+</topic>
+
+<!-- Fuera de topic, enlaza a 6.3 Explicación de preguntas -->
+
+<category>
+    <pattern>*</pattern>
+    <that>DIME LA ID</that>
+    <template><srai>ID <star/></srai></template>
+</category>
+
+<!-- Sinónimos -->
+
+<category><pattern>JUGAR</pattern><template><srai>QUIZ</srai></template></category>
+<category><pattern>^ JUGAR ^</pattern><template><srai>JUGAR</srai></template></category>
+<category><pattern>^ JUGUEMOS ^</pattern><template><srai>JUGAR</srai></template></category>
+<category><pattern>CONOCIMIENTOS</pattern><template>¡Nada mejor que aprender jugando! <srai>JUGAR</srai></template></category>
+<category><pattern>^ CONOCIMIENTOS ^</pattern><template><srai>CONOCIMIENTOS</srai></template></category>
+<category><pattern>^ APRENDER ^</pattern><template><srai>CONOCIMIENTOS</srai></template></category>
+<category><pattern>^ ENSEÑAME ^</pattern><template><srai>CONOCIMIENTOS</srai></template></category>
+<category><pattern>^ ENSEÑAR ^</pattern><template><srai>CONOCIMIENTOS</srai></template></category>
+
+</aiml>

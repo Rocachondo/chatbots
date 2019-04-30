@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+
+<category>
+    <pattern>INFO QUIZ</pattern>
+    <template>
+    <think><set name="topic"></set></think>
+        <srai>INFO <get name="id"/></srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ID *</pattern>
+    <template>
+        <think>
+            <set name="id"><star/></set>
+        </think>
+        <srai>INFO QUIZ</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>^ ID *</pattern>
+    <template><srai>ID <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ ID: *</pattern>
+    <template><srai>ID <star index="2"/></srai></template>
+</category>
+<category>
+    <pattern>^ PREGUNTA *</pattern>
+    <template><srai>ID <star index="2"/></srai></template>
+</category>
+
+<category>
+    <pattern>INFO 0001</pattern>
+    <template>
+        Aquí tienes un artículo relacionado sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://mundoentrenamiento.com/estiramientos-estaticos-o-dinamicos/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0002</pattern>
+    <template>
+        Aquí tienes un artículo relacionado sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.prozis.com/blog/es/mitos-entrenamiento-pesos-mujeres-deben-dejar-creer/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0003</pattern>
+    <template>
+        Aquí tienes un artículo relacionado sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.prozis.com/blog/es/mitos-entrenamiento-pesos-mujeres-deben-dejar-creer/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0004</pattern>
+    <template>
+        Aquí tienes un artículo relacionado sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.prozis.com/blog/es/mitos-entrenamiento-pesos-mujeres-deben-dejar-creer/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0005</pattern>
+    <template>
+        Aquí tienes un artículo relacionado sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.prozis.com/blog/es/mitos-entrenamiento-pesos-mujeres-deben-dejar-creer/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0006</pattern>
+    <template>
+        Aquí tienes un artículo de Sergio Espinar sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/protocolo-hsn-perder-grasa/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0007</pattern>
+    <template>
+        Aquí tienes un artículo de Sergio Espinar sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/protocolo-hsn-perder-grasa/parte-2/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0008</pattern>
+    <template>
+        Aquí tienes un artículo de Sergio Espinar sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/protocolo-hsn-perder-grasa/parte-3/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0009</pattern>
+    <template>
+        Aquí tienes un artículo de Sergio Espinar sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/protocolo-hsn-perder-grasa/parte-4/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0010</pattern>
+    <template>
+        Aquí tienes un artículo interesante sobre Id: <get name="id"/>
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/rutina-de-hipertrofia/mesociclo-fuerza/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0011</pattern>
+    <template>
+        Lo mismo con Id: <get name="id"/> me he pasado un poquito... ¡pero aquí tienes la explicacion!
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/de-que-depende-la-fuerza-factores-musculares-nerviosos/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0012</pattern>
+    <template>
+        Id: <get name="id"/> en efecto, la melatonita es un buen suplemento:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/melatonina/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0013</pattern>
+    <template>
+        Id: <get name="id"/> en ciertos casos pueden ser beneficiosos, pero nunca son mejor opción que la proteína:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/bcaas-aminoacidos-ramificados/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0014</pattern>
+    <template>
+        Id: <get name="id"/> sí, una mujer entrenada es una máquina perfecta de quemar grasa:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/guia-hsn-nutricion-en-la-mujer-deportista/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0015</pattern>
+    <template>
+        Id: <get name="id"/> es falsa, un batido es un complemento a la dieta, nunca debe sustituir una comida real:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/mujeres-y-batidos-de-proteinas/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0016</pattern>
+    <template>
+        Id: <get name="id"/> es falsa, se trata de un sello farmaceutico oficial e internacional que garantiza la composición del producto:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/creatina/creapure/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0017</pattern>
+    <template>
+        Id: <get name="id"/> es falsa, un protocolo nunca es eficaz si no va acompañado de un déficit. Echale un vistazo a este artículo relacionado:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/ayuno-intermitente/cerebro/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0018</pattern>
+    <template>
+        Id: <get name="id"/> eso parece, hay varios estudios que lo avalan:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/microbiota-y-obesidad/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0019</pattern>
+    <template>
+        Id: <get name="id"/> no es nada certera, échale un vistazo a este artículo:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/como-marcar-abdominales/</url>
+        </button>
+    </template>
+</category>
+<category>
+    <pattern>INFO 0019</pattern>
+    <template>
+        Id: <get name="id"/> es cierta, los abdominales no están sólo para lucirlos...cumplen una función importantísima en cualquier actividad o ejercicio:
+        <button>
+            <text>Explicación</text>
+            <url>https://www.hsnstore.com/blog/como-marcar-abdominales/</url>
+        </button>
+    </template>
+</category>
+
+</aiml>

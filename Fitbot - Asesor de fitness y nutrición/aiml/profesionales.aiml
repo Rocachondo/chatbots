@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!--                ESTRUCTURA FITBOT                          -->
+<!--    1. FUNCIONES GENERALES EN udc.aiml                     -->
+<!--    2. ASESORAMIENTO EN asesoramiento.aiml                 -->
+<!--    3. MITOS en mitos.aiml                                 -->
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+<!--    5. Archivos adicionales                                -->
+<!--    5.1 aimlstandardlibrery.aiml Para cálculos básicos     -->
+<!--    5.2 personalidad.aiml Funciones preferencias del bot   -->
+<!--    5.3 antitroll.aiml Filtro de contenido                 -->
+<!--    6.1 QUIZ en quiz.aiml                                  -->
+<!--    6.2 PREGUNTAS QUIZ en quizpreguntas.aiml               -->
+<!--    6.3 EXPLICACION PREGUNTAS en quizexplicacion.aiml      -->
+<!--    7. SEGUIMIENTO (NO IMPLEMENTADO) seguimiento.aiml      -->
+
+
+<!--    4. RECOMENDACION PROFESIONALES EN profesionales.aiml   -->
+	
+<category>
+    <pattern>PROFESIONAL</pattern>
+    <template>
+        <think><set name="topic">profesionales</set></think>
+        <delay>1</delay>
+        Para un asesoramiento profesional te puedo aconsejar varias personas a las que acudir.
+        <condition name="objetivo">
+            <li value="Subir peso">
+                <delay>1</delay>
+                Como tu objetivo es <lowercase><get name="objetivo"/></lowercase> optaría por alguno de estos:
+                <carousel>
+                    <card>
+                        <image></image>
+                        <title>Carlos Demattey (Strongman Tarrako)</title>
+                        <subtitle>13 veces campeón de España de alterofilia</subtitle>
+                        <button>
+                            <text>Entrenador</text>
+                            <url>https://www.instagram.com/strongmantarrako/?hl=es</url>
+                        </button>
+                    </card>
+                    <card>
+                        <image></image>
+                        <title>Roberto Amorosi</title>
+                        <subtitle>Subcampeón del mundo 2018 de culturismo natural</subtitle>
+                        <button>
+                            <text>Preparador</text>
+                            <url>https://www.escuelaculturismonatural.com/</url>
+                        </button>
+                    </card>
+                    <card>
+                        <image></image>
+                        <title>Ismael Galancho</title>
+                        <subtitle>Investigador y docente</subtitle>
+                        <button>
+                            <text>Nutricionista</text>
+                            <url>http://ismaelgalancho.com/</url>
+                        </button>
+                    </card>
+                </carousel>
+            </li>
+            <li value="Bajar peso">
+                <delay>1</delay>
+                Como tu objetivo es <lowercase><get name="objetivo"/></lowercase> optaría por alguno de estos:
+                <carousel>
+                    <card>
+                        <image></image>
+                        <title>David Marchante (PowerExplosive)</title>
+                        <subtitle>Record Guiness de dominada lastrada</subtitle>
+                        <button>
+                            <text>Empresario</text>
+                            <url>https://powerexplosive.com/</url>
+                        </button>
+                    </card>
+                    <card>
+                        <image></image>
+                        <title>Eneko Baz</title>
+                        <subtitle>Culturista natural</subtitle>
+                        <button>
+                            <text>Preparador</text>
+                            <url>https://bazmanscience.com/</url>
+                        </button>
+                    </card>
+                    <card>
+                        <image></image>
+                        <title>Sergio Espinar</title>
+                        <subtitle>Nutricionista y divulgador</subtitle>
+                        <button>
+                            <text>Nutricionista</text>
+                            <url>https://sergioespinar.com/</url>
+                        </button>
+                    </card>
+                </carousel>
+            </li>
+            <li value="Mantener peso">
+                <delay>1</delay>
+                Como tu objetivo es <lowercase><get name="objetivo"/></lowercase> estos te pueden servir:
+                <carousel>
+                    <card>
+                        <image></image>
+                        <title>Sergio Peinado</title>
+                        <subtitle>Entrenador e influencer</subtitle>
+                        <button>
+                            <text>Entrenador</text>
+                            <url>https://www.entrenaconsergiopeinado.com/</url>
+                        </button>
+                    </card>
+                    <card>
+                        <image></image>
+                        <title>El coach nutricional</title>
+                        <subtitle>Nutricionista e influencer</subtitle>
+                        <button>
+                            <text>Nutricionista</text>
+                            <url>https://www.elcoachnutricional.com/</url>
+                        </button>
+                    </card>
+                </carousel>
+            </li>
+            <li>
+                <delay>1</delay>
+                Dependiendo de tu objetivo puedo remitirte a algún profesional más específico.<br/>
+                Dime, ¿Cuál es tu objetivo?
+            </li>
+        </condition>
+    </template>
+</category>
+    <!-- Sin objetivo definido -->
+    <category>
+        <pattern>^ <set>objetivos</set> ^</pattern>
+        <that>¿Cuál es tu objetivo</that>
+        <template>
+            <think><set name="objetivo"><map name="objetivos"><star index="2"></star></map></set></think>
+            <srai>PROFESIONAL</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>^ <set>duda</set></pattern>
+        <that>¿Cuál es tu objetivo</that>
+        <template>
+            Lo siento pero no puedo decidir tu objetivo por tí, pero igualmente te listo los profesionales que recomiendo. <br/>
+            <srai>TODOS LOS PROFESIONALES</srai>
+            </template>
+    </category>
+
+    <!-- Sinónimos -->
+<category><pattern>^ PROFESIONAL ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ PROFESIONALES ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ ENTRENADOR ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ ENTRENADORES ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ PREPARADOR ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ DIETISTA ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ DIETISTAS ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ NUTRICIONISTA ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+<category><pattern>^ NUTRICIONISTAS ^</pattern><template><srai>PROFESIONAL</srai></template></category>
+
+    <!-- Entrenadora -->
+<category>
+    <pattern>ENTRENADORA</pattern>
+    <template>
+    <delay>1</delay>    
+    Claro, conozco unas muy buenas especilizadas en llevar a chicas:
+        <carousel>
+            <card>
+                <image></image>
+                <title>Ely Estall</title>
+                <subtitle>Entrenadora</subtitle>
+                <button>
+                    <text>Entrenadora</text>
+                    <url>https://ely-fitness.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Maria Casas</title>
+                <subtitle>Farmaceutica y nutricionista</subtitle>
+                <button>
+                    <text>Nutricionista</text>
+                        <url>https://maria-casas.com/</url>
+                    </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+    <!-- Sinónimos -->
+<category><pattern>^ ENTRENADORA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ ENTRENADORA MUJER^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ ENTRENADORA CHICA^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ MUJER ENTRENADORA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ CHICA ENTRENADORA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ PREPARADORA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ PREPARADORA MUJER ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ PREPARADORA CHICA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ MUJER PREPARADORA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+<category><pattern>^ CHICA PREPARADORA ^</pattern><template><srai>ENTRENADORA</srai></template></category>
+
+    <!-- Todos los profesionales -->
+
+<category>
+    <pattern>TODOS LOS PROFESIONALES</pattern>
+    <template>
+        <carousel>
+            <card>
+                <image></image>
+                <title>Carlos Demattey (Strongman Tarrako)</title>
+                <subtitle>13 veces campeón de España de alterofilia</subtitle>
+                <button>
+                    <text>Entrenador</text>
+                    <url>https://www.instagram.com/strongmantarrako/?hl=es</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Roberto Amorosi</title>
+                <subtitle>Subcampeón del mundo 2018 de culturismo natural</subtitle>
+                <button>
+                    <text>Preparador</text>
+                    <url>https://www.escuelaculturismonatural.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Ismael Galancho</title>
+                <subtitle>Investigador y docente</subtitle>
+                <button>
+                    <text>Nutricionista</text>
+                    <url>http://ismaelgalancho.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>David Marchante (PowerExplosive)</title>
+                <subtitle>Record Guiness de dominada lastrada</subtitle>
+                <button>
+                    <text>Empresario</text>
+                    <url>https://powerexplosive.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Eneko Baz</title>
+                <subtitle>Culturista natural</subtitle>
+                <button>
+                    <text>Preparador</text>
+                    <url>https://bazmanscience.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Sergio Espinar</title>
+                <subtitle>Nutricionista y divulgador</subtitle>
+                <button>
+                    <text>Nutricionista</text>
+                    <url>https://sergioespinar.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>David Marchante (PowerExplosive)</title>
+                <subtitle>Record Guiness de dominada lastrada</subtitle>
+                <button>
+                    <text>Empresario</text>
+                    <url>https://powerexplosive.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Eneko Baz</title>
+                <subtitle>Culturista natural</subtitle>
+                <button>
+                    <text>Preparador</text>
+                    <url>https://bazmanscience.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Sergio Espinar</title>
+                <subtitle>Nutricionista y divulgador</subtitle>
+                <button>
+                    <text>Nutricionista</text>
+                    <url>https://sergioespinar.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Ely Estall</title>
+                <subtitle>Entrenadora</subtitle>
+                <button>
+                    <text>Entrenadora</text>
+                    <url>https://ely-fitness.com/</url>
+                </button>
+            </card>
+            <card>
+                <image></image>
+                <title>Maria Casas</title>
+                <subtitle>Farmaceutica y nutricionista</subtitle>
+                <button>
+                    <text>Nutricionista</text>
+                    <url>https://maria-casas.com/</url>
+                </button>
+            </card>
+        </carousel>
+    </template>
+</category>
+
+</aiml>
