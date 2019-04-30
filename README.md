@@ -35,3 +35,9 @@
 > #### Quiz
 > - Juego de 5 preguntas aleatorias (de 20) que establece puntuación y comenta el resultado.
 > - Además, da la opción de explicar la pregunta haciendo referencia a su Id, vinculando en cada caso un enlace a un articulo relacionado.
+
+- Este bot no lo desplegué en la plataforma de pandorabots, por lo que no lo he probado con otros usuarios para poder depurar mejor su interacción. Aun así, su al utilizar del nucleo y filtros del otro (con diferente personalidad y respuestas) resulta ser bastante funcional.
+
+Quedaron varias ideas más en el tintero, como realizar el seguimiento del usuario y el asesoramiento en la asignación de macronutrientes de la dieta, pero no me ha quedado tiempo de desarrollarlo. Aun así, tengo pensado seguir trabajando en él después de los exámenes y, posiblemente, trasladarlo a la raspberry y seguir desarrollándolo junto a una base de datos de alimentos para dar un servicio real en internet. Esta era mi idea inicial, pero pandorabots restringe el uso del tag sraix a llamar a otros bots, no se pueden llamar otros servicios. Aún así, he quedado satisfecho con el resultado y con ganas de seguir explorando este campo.
+
+Saludos
